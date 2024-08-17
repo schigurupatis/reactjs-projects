@@ -1,0 +1,19 @@
+# Parcel
+- Parcel is creating following things for us
+- Dev Build
+- Local Server
+- creates HMR (Hot Module Replacement)
+- uses File Watching Algorith (written in C++)
+- caching for faster builds
+- Image Optimization
+- Minification Files
+- Bundeling Files
+- Compress Files
+- Code splitting
+- Consistent Hashing
+- Differential Bundeling (supporting diffrent versions of browsers)
+- Diagnostics
+- Error Handling
+- HTTPs
+- Tree shaking Algorithm (will remove unused code for you)
+- different bundles for Dev and Production modes
