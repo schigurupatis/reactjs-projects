@@ -16,18 +16,15 @@ const Body = () => {
     const fetchData = async () => {
         const data = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=14.44840&lng=79.98880&page_type=DESKTOP_WEB_LISTING')
         const json = await data.json();
-        console.log(json)
+        //console.log(json)
         setListOfRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
     }
 
-    // let resList = json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants;
-    // console.log(resList)
+    // if(listOfRestaurants.length === 0) {
+    //     return <Shimmer />
+    // }
 
-    if(listOfRestaurants.length === 0) {
-        return <Shimmer />
-    }
-
-    return (
+    return listOfRestaurants.length === 0 ? <Shimmer /> : (
         <div className="body">
             <div className="container p-20">
                 <h1 className="mb-1">Top Restaurants Near to Your Location</h1>

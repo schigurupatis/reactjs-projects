@@ -63,10 +63,16 @@ header nav ul {
     align-items: center;
     gap: 40px;
 }
+header nav ul li,
+header nav ul li a { 
+    min-width: 56px;
+    display: block;
+}
 header nav ul li a {
     color: var(--black);
     font-size: 16px;
     font-weight: 600;
+    text-align: center;
 }
 .mb-1 {
     margin-bottom: 1.2rem;
