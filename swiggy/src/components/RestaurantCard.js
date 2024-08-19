@@ -13,7 +13,6 @@ return(
       <img src={CDN_URL+ resData.info.cloudinaryImageId} alt="RestaurantName" />
   </div>
   <div className="res-data">
-    <h1>Testing Card Title</h1>
       <h3 className="name">{name}</h3>
       <div>
           <h4 className="ratings">{avgRatingString} Stars</h4>
