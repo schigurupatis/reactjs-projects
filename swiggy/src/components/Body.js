@@ -1,5 +1,6 @@
 import RestaurantCard from "./RestaurantCard"
 import { useState, useEffect } from "react"
+import Shimmer from "./Shimmer";
 
 
 const Body = () => {
@@ -15,8 +16,15 @@ const Body = () => {
     const fetchData = async () => {
         const data = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=14.44840&lng=79.98880&page_type=DESKTOP_WEB_LISTING')
         const json = await data.json();
-        //console.log(json)
-        setListOfRestaurants(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants)
+        console.log(json)
+        setListOfRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+    }
+
+    // let resList = json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants;
+    // console.log(resList)
+
+    if(listOfRestaurants.length === 0) {
+        return <Shimmer />
     }
 
     return (
@@ -26,22 +34,22 @@ const Body = () => {
                 {/* Filtering Data Options */}
                 <div className="filters">
                     <button className="btn" onClick={()=> {
-                        let allRes = resList.filter((res) => (res))
+                        let allRes = listOfRestaurants.filter((res) => (res))
                         //console.log(allRes)
                         setListOfRestaurants(allRes)
                     }}>All Restaurants</button>
                     <button className="btn" onClick={()=> {
-                        let topRatings = resList.filter((res) => (res.info.avgRating > 4.2))
+                        let topRatings = listOfRestaurants.filter((res) => (res.info.avgRating > 4.2))
                         //console.log(topRatings)
                         setListOfRestaurants(topRatings)
                     }}>Ratings 4.0 +</button>
                     <button className="btn" onClick={()=> {
-                        let fastDelivery = resList.filter((res) => (res.info.sla.deliveryTime > 40))
+                        let fastDelivery = listOfRestaurants.filter((res) => (res.info.sla.deliveryTime < 30))
                         //console.log(fastDelivery)
                         setListOfRestaurants(fastDelivery)
                     }}>Fast Delivery</button>
                     <button className="btn" onClick={()=> {
-                        let pureVeg = resList.filter((res) => (res.info.veg === true))
+                        let pureVeg = listOfRestaurants.filter((res) => (res.info.veg === true))
                         //console.log(pureVeg)
                         setListOfRestaurants(pureVeg)
                     }}>Pure Veg</button>
@@ -49,7 +57,6 @@ const Body = () => {
 
                 {/*  Restaurant Cards Container */}
                 <div className="res-cards-container">
-                  
                     {
                         listOfRestaurants.map((restaurant) => (
                             <RestaurantCard resData={restaurant} key={restaurant.info.id} />

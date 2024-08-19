@@ -166,3 +166,18 @@ footer * {
     cursor: pointer;
     color: var(--black);
 }
+
+.shimmer-container {
+    display: var(--flex);
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    row-gap: 40px;
+    column-gap: 20px;
+    padding: 169px 0 50px 0;
+}
+.shimmer-container .shimmer-card {
+    background-color: #f0f0f0;
+    border-radius: 15px;
+    height: 291px;
+    width: 240px;
+}
