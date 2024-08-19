@@ -1,11 +1,11 @@
 import RestaurantCard from "./RestaurantCard"
-import resList from "../utils/mockData"
 import { useState, useEffect } from "react"
 
 
 const Body = () => {
   
-    const [listOfRestaurants, setListOfRestaurants] = useState(resList);
+    // const [listOfRestaurants, setListOfRestaurants] = useState(resList);
+    const [listOfRestaurants, setListOfRestaurants] = useState([]);
 
     useEffect(() => {
         //console.log("useEffect Called")
