@@ -11,7 +11,7 @@ const Body = () => {
         <div className="body">
             <div className="container p-20">
                 <h1 className="mb-1">Top Restaurants in your location</h1>
-                
+                <h2>Testing here</h2>
                 {/* Filtering Data Options */}
                 <div className="filters">
                     <button className="btn" onClick={()=> {
