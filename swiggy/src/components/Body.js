@@ -29,27 +29,30 @@ const Body = () => {
             <div className="container p-20">
                 <h1 className="mb-1">Top Restaurants Near to Your Location</h1>
                 {/* Filtering Data Options */}
-                <div className="filters">
-                    <button className="btn" onClick={()=> {
-                        let allRes = listOfRestaurants.filter((res) => (res))
-                        //console.log(allRes)
-                        setListOfRestaurants(allRes)
-                    }}>All Restaurants</button>
-                    <button className="btn" onClick={()=> {
-                        let topRatings = listOfRestaurants.filter((res) => (res.info.avgRating > 4.2))
-                        //console.log(topRatings)
-                        setListOfRestaurants(topRatings)
-                    }}>Ratings 4.0 +</button>
-                    <button className="btn" onClick={()=> {
-                        let fastDelivery = listOfRestaurants.filter((res) => (res.info.sla.deliveryTime < 30))
-                        //console.log(fastDelivery)
-                        setListOfRestaurants(fastDelivery)
-                    }}>Fast Delivery</button>
-                    <button className="btn" onClick={()=> {
-                        let pureVeg = listOfRestaurants.filter((res) => (res.info.veg === true))
-                        //console.log(pureVeg)
-                        setListOfRestaurants(pureVeg)
-                    }}>Pure Veg</button>
+                <div className="filters-container">
+                    <div className="search-container">
+                        <div className="search-form">
+                            <input type="text" id="search-text" className="search-text" placeholder="Search for Restaurant and Food" />
+                            <button className="btn btn-search">Search</button>
+                        </div>
+                    </div>
+                    <div className="filters">
+                        <button className="btn" onClick={()=> {
+                            let topRatings = listOfRestaurants.filter((res) => (res.info.avgRating > 4.2))
+                            //console.log(topRatings)
+                            setListOfRestaurants(topRatings)
+                        }}>Ratings 4.0 +</button>
+                        <button className="btn" onClick={()=> {
+                            let fastDelivery = listOfRestaurants.filter((res) => (res.info.sla.deliveryTime < 30))
+                            //console.log(fastDelivery)
+                            setListOfRestaurants(fastDelivery)
+                        }}>Fast Delivery</button>
+                        <button className="btn" onClick={()=> {
+                            let pureVeg = listOfRestaurants.filter((res) => (res.info.veg === true))
+                            //console.log(pureVeg)
+                            setListOfRestaurants(pureVeg)
+                        }}>Pure Veg</button>
+                    </div>
                 </div>
 
                 {/*  Restaurant Cards Container */}

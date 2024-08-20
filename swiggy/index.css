@@ -142,12 +142,30 @@ footer * {
     display: var(--flex);
     justify-content: var(--space-between);
 }
-.filters {
+.filters-container {
+    display: flex;
+    justify-content: space-between;
     margin: 2rem 0;
+    align-items: center;
+}
+.filters-container .search-form {
+    background-color: #ebebeb;
+    border-radius: 20px;
+    min-width: 240px;
+}
+.filters-container .search-text {
+    border-radius: 18px;
+    background-color: transparent;
+    padding: 9px 12px;
+    font-size: 14px;
+    color: var(--black);
+    border: none;
+}
+.filters {
     display: flex;
     column-gap: 10px;
 }
-.filters .btn {
+.filters-container .btn {
     border-radius: 18px;
     background-color: rgb(255, 255, 255);
     border: 1px solid rgba(2, 6, 12, 0.15);
@@ -171,6 +189,17 @@ footer * {
     transition: 100ms ease-in;
     cursor: pointer;
     color: var(--black);
+}
+.search-form .btn.active,
+.search-form .btn.focus,
+.search-form input[type="text"]:focus,
+.search-form input[type="text"]:active,
+.search-form input[type="text"]:focus-visible {
+    border: none;
+    outline: none;
+}
+.search-form .btn {
+    color: var(--primary-color);
 }
 
 .shimmer-container {
