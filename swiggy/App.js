@@ -8,7 +8,7 @@ import ContactUs from "./src/components/ContactUs"
 import Cart from "./src/components/Cart"
 import Error from "./src/components/Error"
 
-import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom"
 
 
 
@@ -17,7 +17,7 @@ const Applayout = () => {
     return(
         <div className="app">
             <Header />
-            <Body />
+            <Outlet />
             <Footer />
         </div>
     )
@@ -28,23 +28,29 @@ const appRouter = createBrowserRouter([
   {
     path: "/",
     element: <Applayout />,
+    children: [
+      {
+        path: "/",
+        element: <Body />
+      },
+      {
+        path: "/home",
+        element: <Body />
+      },
+      {
+        path: "/about",
+        element: <About />
+      },
+      {
+        path: "/contactus",
+        element: <ContactUs />
+      },
+      {
+        path: "/cart",
+        element: <Cart />
+      },
+    ],
     errorElement: <Error />
-  },
-  {
-    path: "/home",
-    element: <Applayout />
-  },
-  {
-    path: "/about",
-    element: <About />
-  },
-  {
-    path: "/contactus",
-    element: <ContactUs />
-  },
-  {
-    path: "/cart",
-    element: <Cart />
   },
 ])
 
