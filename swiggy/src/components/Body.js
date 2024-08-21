@@ -8,11 +8,13 @@ const Body = () => {
     // const [listOfRestaurants, setListOfRestaurants] = useState(resList);
     const [listOfRestaurants, setListOfRestaurants] = useState([]);
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+    const [searchText, setsearchText] = useState("");
+    // console.log(searchText)
 
 
     console.log("body rendered")
     useEffect(() => {
-        console.log("useEffect Called")
+        //console.log("useEffect Called")
         fetchData();
     }, [])
 
@@ -30,8 +32,7 @@ const Body = () => {
     //     return <Shimmer />
     // }
 
-    const [searchText, setsearchText] = useState("");
-    // console.log(searchText)
+    
 
     return listOfRestaurants.length === 0 ? <Shimmer /> : (
         <div className="main-content">
@@ -47,8 +48,15 @@ const Body = () => {
                             }} placeholder="Search for Restaurant and Food" />
                             <button className="btn btn-search" onClick={()=> {
                                 //console.log("value from button clicked is:", searchText)
-                                const filteredRes = listOfRestaurants.filter((res) => (res.info.name.toLowerCase().includes(searchText.toLowerCase())))
-                                setFilteredRestaurants(filteredRes)
+                                if(searchText) {
+                                    // console.log(searchText)
+                                    const filteredRes = listOfRestaurants.filter((res) => (res.info.name.toLowerCase().includes(searchText.toLowerCase())))
+                                    setFilteredRestaurants(filteredRes)
+                                } else {
+                                    console.log("please enter search keyword")
+                                }
+                                
+                                
                             }}>Search</button>
                         </div>
                     </div>
@@ -75,12 +83,24 @@ const Body = () => {
                 </div>
 
                 {/*  Restaurant Cards Container */}
-                <div className="res-cards-container">
+                {/* <div className="res-cards-container">
                     {
                         filteredRestaurants.map((restaurant) => (
                             <RestaurantCard resData={restaurant} key={restaurant.info.id} />
                         ))
                     }
+                </div> */}
+                {/* Restaurant Cards Container */}
+                <div className="res-cards-container">
+                    {filteredRestaurants.length === 0 && searchText !== "" ? (
+                        <h2 className="no-data-found">
+                            No Data Found for your Search
+                        </h2>
+                    ) : (
+                        filteredRestaurants.map((restaurant) => (
+                        <RestaurantCard resData={restaurant} key={restaurant.info.id} />
+                        ))
+                    )}
                 </div>
             </div>
         </div>
