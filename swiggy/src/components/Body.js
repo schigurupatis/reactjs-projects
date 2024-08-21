@@ -10,27 +10,56 @@ const Body = () => {
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
     const [searchText, setsearchText] = useState("");
     // console.log(searchText)
+    const [pageNumber, setPageNumber] = useState(1); // New state for pagination
+    const [hasMore, setHasMore] = useState(true); // New state for loading indicator
 
 
     console.log("body rendered")
-    useEffect(() => {
-        //console.log("useEffect Called")
-        fetchData();
-    }, [])
+    // useEffect(() => {
+    //     //console.log("useEffect Called")
+    //     fetchData();
+    // }, [])
 
-    //console.log(a, b)
+    useEffect(() => {
+        fetchData(pageNumber);
+      }, [pageNumber]); // Fetch data on page change
     
-    const fetchData = async () => {
-        const data = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=14.44840&lng=79.98880&page_type=DESKTOP_WEB_LISTING')
-        const json = await data.json();
-        //console.log(json)
-        setListOfRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-        setFilteredRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+    const fetchData = async (page) => {
+        const url = `https://www.swiggy.com/dapi/restaurants/list/v5?lat=14.44840&lng=79.98880&page_type=DESKTOP_WEB_LISTING&offset=${(page - 1) * 20}`; // Updated URL with pagination logic
+
+        try {
+            const data = await fetch(url)
+            const json = await data.json();
+            //console.log(json)
+
+            if (json.statusCode === 1) {
+                console.error("Error fetching data:", json.statusMessage);
+                return; // Handle error gracefully (optional)
+            }
+
+            // setListOfRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+            // setFilteredRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+            const newRestaurants = json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants || [];
+            
+            setListOfRestaurants((prevRestaurants) => [...prevRestaurants, ...newRestaurants]);
+            setFilteredRestaurants((prevFiltered) => [...prevFiltered, ...newRestaurants]);
+            setHasMore(newRestaurants.length === 20); // Check if more data exists
+        } 
+        catch (error) {
+            console.error("Error fetching data:", error);
+        }
+
     }
 
     // if(listOfRestaurants.length === 0) {
     //     return <Shimmer />
     // }
+
+    const handleLoadMore = () => {
+        if (hasMore) {
+          setPageNumber(pageNumber + 1);
+        }
+      };
 
     
 
@@ -52,15 +81,17 @@ const Body = () => {
                                     // console.log(searchText)
                                     const filteredRes = listOfRestaurants.filter((res) => (res.info.name.toLowerCase().includes(searchText.toLowerCase())))
                                     setFilteredRestaurants(filteredRes)
-                                } else {
-                                    console.log("please enter search keyword")
-                                }
-                                
-                                
+                                } 
                             }}>Search</button>
                         </div>
                     </div>
                     <div className="filters">
+                        <button className="btn" onClick={()=> {
+                            
+                            let allRes = listOfRestaurants.filter((res) => (res))
+                            //console.log(topRatings)
+                            setFilteredRestaurants(allRes)
+                        }}>All</button>
                         <button className="btn" onClick={()=> {
                             
                             let topRatings = listOfRestaurants.filter((res) => (res.info.avgRating > 4.3))
@@ -92,6 +123,7 @@ const Body = () => {
                 </div> */}
                 {/* Restaurant Cards Container */}
                 <div className="res-cards-container">
+
                     {filteredRestaurants.length === 0 && searchText !== "" ? (
                         <h2 className="no-data-found">
                             No Data Found for your Search
@@ -101,7 +133,21 @@ const Body = () => {
                         <RestaurantCard resData={restaurant} key={restaurant.info.id} />
                         ))
                     )}
+
+                    
                 </div>
+
+
+                {/* Load More Button (optional) */}
+                {hasMore && (
+                    <div className="container">
+                        <div className="load-more-container">
+                            <button className="btn btn-load-more" onClick={handleLoadMore}>
+                                Load More
+                            </button>
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
     )

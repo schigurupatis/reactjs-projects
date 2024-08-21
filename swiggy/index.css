@@ -172,7 +172,8 @@ footer * {
     display: flex;
     column-gap: 10px;
 }
-.filters-container .btn {
+.filters-container .btn,
+.load-more-container .btn {
     border-radius: 18px;
     background-color: rgb(255, 255, 255);
     border: 1px solid rgba(2, 6, 12, 0.15);
@@ -183,6 +184,7 @@ footer * {
     transition: 100ms ease-in;
     cursor: pointer;
     color: var(--black);
+    min-width: 60px;
 }
 .filters .btn:active,
 .filters .btn:focus {
@@ -229,4 +231,14 @@ footer * {
     border-radius: 15px;
     height: 291px;
     width: 240px;
+}
+.load-more-container {
+    display: var(--flex);
+    justify-content: var(--center);
+    align-items: var(--center);
+    margin: 2rem 0;
+}
+.load-more-container .btn {
+    background-color: var(--primary-color);
+    color: #fff;
 }
