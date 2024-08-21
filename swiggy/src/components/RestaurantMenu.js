@@ -17,7 +17,7 @@ const RestaurantMenu = () => {
     const fetchMenu = async () => {
         const data = await fetch( MENU_API + resId)
         const json = await data.json()
-        //console.log(json)
+        console.log(json)
 
         setResInfo(json.data)
         
@@ -27,6 +27,9 @@ const RestaurantMenu = () => {
     if (resInfo === null) return <Shimmer />; 
     
     const {name, avgRating, totalRatingsString, costForTwoMessage, cuisines, areaName, sla, feeDetails } = resInfo.cards[2]?.card?.card?.info
+    const { itemCards } = resInfo.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.categories[0]?.itemCards[0]?.card?.info
+
+    console.log(itemCards)
 
     return (
         <div>
