@@ -9,8 +9,10 @@ const Header = () => {
         <header>
             <div className="container-fluid">
                 <div className="logo-sec">
-                    <img src={LOGO_URL} alt="" />
-                    <p>Online Food Ordering App</p>
+                    <Link to="/">
+                        <img src={LOGO_URL} alt="" />
+                        <p>Online Food Ordering App</p>
+                    </Link>
                 </div>
                 <div className="navigation">
                     <nav>

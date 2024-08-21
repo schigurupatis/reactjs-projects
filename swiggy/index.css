@@ -49,7 +49,8 @@ header {
     justify-content: var(--space-between);
     align-items: var(--center);
 }
-.logo-sec {
+.logo-sec,
+.logo-sec a {
     display: var(--flex);
     align-items: var(--center);
 }
@@ -258,13 +259,7 @@ footer * {
     padding: 20px;
     
 }
-.res-menu h1 {
-    font-weight: 800;
-    font-size: 24px;
-    line-height: 28px;
-    letter-spacing: -0.4px;
-    color: rgba(2, 6, 12, 0.92);
-}
+
 .card-shadow {
     background: linear-gradient(rgb(255, 255, 255) -6.71%, rgb(235, 235, 242) 56.19%, rgb(223, 223, 231) 106.56%);
     padding: 0px 16px 16px;
