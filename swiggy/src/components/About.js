@@ -13,7 +13,7 @@ const About = () => {
                         <br />
                         <User name={"Santha Kumar Chigurpati"} designation={"UI/UX Engineer"} location={"Hyderabad"} contact={"@schigurupatis"} />
                         <br />
-                        <UserClass />
+                        <UserClass name={"Santha Kumar Chigurpati"} designation={"UI/UX Engineer"} location={"Hyderabad"} contact={"@schigurupatis"} />
                 </div>
             </div>
         </div>
