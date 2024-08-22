@@ -1,26 +1,25 @@
 import React from 'react'
-import SubUserClass from './SubUserClass'
 
-class UserClass extends React.Component {
+class SubUserClass extends React.Component {
     constructor(props) {
         super(props)
-        console.log(this.props.name + "Child Props",props)
+        console.log("SubUserClass Child Props",props)
 
         this.state = {
             count: 1,
         }
 
-        console.log(this.props.name + "Child Constructor")
+        console.log("SubUserClass Child Constructor")
     }
 
     componentDidMount() {
-        console.log(this.props.name + "Child Component Did Mount")
+        console.log("SubUserClass Child Component Did Mount")
     }
 
     render () {
         const {name, designation, location, contact} = this.props;
 
-        console.log(this.props.name + "Chiled Render")
+        console.log("SubUserClass Chiled Render")
 
         return (
             <div className="user-card">
@@ -37,10 +36,9 @@ class UserClass extends React.Component {
                 <h4>Designatio: {designation}</h4>
                 <h2>Location: {location}</h2>
                 <h3>Contact: {contact}</h3>
-                <SubUserClass />
             </div>
         )
     }
 }
 
-export default UserClass
+export default SubUserClass

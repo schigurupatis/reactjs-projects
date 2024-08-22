@@ -347,4 +347,11 @@ footer * {
     background: rgb(196, 196, 196);
  }
 
+ .user-card {
+    border: 1px solid #111;
+    background-color: #ddd;
+    padding: 10px;
+    margin-bottom: 20px;
+ }
+
 
