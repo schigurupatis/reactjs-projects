@@ -8,7 +8,6 @@ const {name, avgRatingString, sla, cuisines, veg} = resData?.info
 
 return(
 <div className="res-card">
-<a href="#">
   <div className="res-img">
       <img src={CDN_URL+ resData.info.cloudinaryImageId} alt="RestaurantName" />
   </div>
@@ -21,7 +20,6 @@ return(
       <h5 className="quisines">{cuisines.join(", ")}</h5>
       <h5 className="quisines">{veg}</h5>
   </div>
-</a>
 </div>
 )
 }

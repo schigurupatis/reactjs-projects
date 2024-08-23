@@ -130,9 +130,10 @@ const Body = () => {
                             No Data Found for your Search
                         </h2>
                     ) : (
+                        //filteredRestaurants.map((restaurant) => ( console.log(restaurant.info.id) ))
                         filteredRestaurants.map((restaurant) => (
-                        <Link to={"/restaurant/" + restaurant.info.id}>
-                            <RestaurantCard resData={restaurant} key={restaurant.info.id} />
+                        <Link to={"/restaurant/" + restaurant.info.id} key={restaurant.info.id}>
+                            <RestaurantCard resData={restaurant} key={restaurant.info.id}  />
                         </Link>
                         ))
                     )}
