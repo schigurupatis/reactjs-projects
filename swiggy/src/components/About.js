@@ -1,5 +1,3 @@
-import Header from "./Header"
-import Footer from "./Footer"
 import User from "./User"
 import UserClass from "./UserClass"
 import React from "react"
@@ -45,8 +43,7 @@ class About extends React.Component {
                          <User name={"Santha Kumar Chigurpati"} designation={"UI/UX Engineer"} location={"Hyderabad"} contact={"@schigurupatis"} /> */}
                          <br />
                          <UserClass name={"Santha Kumar Chigurpati"} designation={"UI/UX Engineer"} location={"Hyderabad"} contact={"@schigurupatis"} />
-                         <br />
-                         <UserClass name={"Elon Musk"} designation={"Manager"} location={"USA"} contact={"@elonmusk"} />
+                        
                  </div>
              </div>
         </div>
