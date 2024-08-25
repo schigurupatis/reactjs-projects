@@ -4,7 +4,7 @@ import { json } from "react-router-dom";
 const User = () => {
 
     //const [count1, setCount1] = useState(1);
-    const [userData, setUserData] = useState(null); // Initialize state for user data
+    const [userData, setUserData] = useState(""); // Initialize state for user data
 
 
     useEffect(()=> {
@@ -19,18 +19,18 @@ const User = () => {
 
         setUserData(json); // Update state with fetched data
     }
-
-    const {name, bio, company, public_repos, created_at, login} = userData.json
-
+    
+    
+    const {name, bio, company, public_repos, created_at, login} = userData
     return(
         <div className="user-card">
             <h1>Functional Component</h1>
             <br />
             <h3></h3>
-            <h3>Name: {userData.name}</h3>
-            <h4>Designatio: {userData.created_at}</h4>
-            <h2>Location: {userData.login}</h2>
-            <h3>Contact: {userData.public_repos}</h3>
+            <h3>Name: {name}</h3>
+            <h4>Designatio: {created_at}</h4>
+            <h2>Location: {login}</h2>
+            <h3>Contact: {public_repos}</h3>
         </div>
     )
 }
