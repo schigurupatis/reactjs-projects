@@ -358,4 +358,7 @@ footer * {
     height: 60px;
     border-radius: 50px;
 }
+.my-5 {
+    margin-block: 5rem;
+}
 
