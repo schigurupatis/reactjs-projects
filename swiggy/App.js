@@ -1,4 +1,4 @@
-import React from "react"
+import React, { lazy} from "react"
 import ReactDOM from "react-dom/client"
 import Header from "./src/components/Header"
 import Body from "./src/components/Body"
@@ -9,9 +9,10 @@ import Cart from "./src/components/Cart"
 import Error from "./src/components/Error"
 import RestaurantMenu from "./src/components/RestaurantMenu"
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom"
+//import Grocery from "./src/components/Grocery"
 
 
-
+const Grocery = lazy(() => import("./src/components/Grocery"))
 
 const Applayout = () => {
     return(
@@ -44,6 +45,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/contactus",
         element: <ContactUs />
+      },
+      {
+        path: "/grocery",
+        element: <Grocery />
       },
       {
         path: "/cart",

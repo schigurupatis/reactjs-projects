@@ -20,6 +20,7 @@ const Header = () => {
                 <div className="navigation">
                     <nav>
                         <ul>
+                            <li>Online Status: {onlineStatus ? "🟢" : "🔴"}</li>
                             <li><Link to="/">Home</Link></li>
                             <li><Link to="/about">About</Link></li>
                             <li><Link to="/contactus">ContactUs</Link></li>
@@ -27,7 +28,8 @@ const Header = () => {
                                 btnNameReact === "LogIn" ? setbtnNameReact("LogOut") : setbtnNameReact("LogIn")  
                             }}>{btnNameReact}</a></li>
                             <li><Link to="/cart">Cart</Link></li>
-                            <li>Online Status: {onlineStatus ? "🟢" : "🔴"}</li>
+                            <li><Link to="/grocery">Grocery</Link></li>
+
                         </ul>
                     </nav>
                 </div>
