@@ -78,16 +78,17 @@ const Body = () => {
     return listOfRestaurants.length === 0 ? <Shimmer /> : (
         <div className="main-content">
             <div className="container mx-auto">
-                <h1 className="mb-1">Top Restaurants Near to Your Location</h1>
+                <h1 className="text-2xl font-bold my-10">Top Restaurants Near to Your Location</h1>
                 {/* Filtering Data Options */}
-                <div className="filters-container">
+                <div className="filters-container container flex justify-between items-center">
                     <div className="search-container">
-                        <div className="search-form">
-                            <input type="text" id="search-text" className="search-text" value={searchText} onChange={(e) => {
+                        <div className="search-form flex justify-between items-center">
+                            
+                            <input type="text" id="search-text" className="p-5 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 search-text" value={searchText} onChange={(e) => {
                                 //console.log("value from search field is:", e.target.value)
                                 setsearchText(e.target.value);
                             }} placeholder="Search for Restaurant and Food" />
-                            <button className="btn btn-search" onClick={()=> {
+                            <button className="btn btn-search rounded-r-lg bg-orange-600 text-white p-2" onClick={()=> {
                                 //console.log("value from button clicked is:", searchText)
                                 if(searchText) {
                                     // console.log(searchText)
@@ -134,7 +135,7 @@ const Body = () => {
                     }
                 </div> */}
                 {/* Restaurant Cards Container */}
-                <div className="res-cards-container">
+                <div className="res-cards-container" style={{display: "none"}}>
 
                     {filteredRestaurants.length === 0 && searchText !== "" ? (
                         <h2 className="no-data-found">
