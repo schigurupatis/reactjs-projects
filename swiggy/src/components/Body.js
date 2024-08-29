@@ -67,8 +67,8 @@ const Body = () => {
 
       const onlineStatus = useOnlineStatus();
       if(onlineStatus === false) return (
-            <div className="container">
-                <div className="my-5">                
+            <div className="container mx-auto">
+                <div className="">                
                     <h1>Looks like you are Offline</h1>
                 </div>
             </div>
@@ -77,7 +77,7 @@ const Body = () => {
 
     return listOfRestaurants.length === 0 ? <Shimmer /> : (
         <div className="main-content">
-            <div className="container p-20">
+            <div className="container mx-auto">
                 <h1 className="mb-1">Top Restaurants Near to Your Location</h1>
                 {/* Filtering Data Options */}
                 <div className="filters-container">

@@ -9,17 +9,16 @@ const Header = () => {
     const onlineStatus = useOnlineStatus()
 
     return(
-        <header>
-            <div className="container-fluid">
-                <div className="logo-sec">
-                    <Link to="/">
-                        <img src={LOGO_URL} alt="" />
-                        <p>Online Food Ordering App</p>
+        <header className="bg-white shadow-lg">
+            <div className="flex justify-between items-center container mx-auto">
+                <div>
+                    <Link to="/"  className="flex justify-between items-center">
+                        <img src={LOGO_URL} alt="" className="w-56" />
                     </Link>
                 </div>
                 <div className="navigation">
                     <nav>
-                        <ul>
+                        <ul className="flex">
                             <li>Online Status: {onlineStatus ? "🟢" : "🔴"}</li>
                             <li><Link to="/">Home</Link></li>
                             <li><Link to="/about">About</Link></li>
@@ -33,6 +32,7 @@ const Header = () => {
                         </ul>
                     </nav>
                 </div>
+                
             </div>
     </header>
     )
