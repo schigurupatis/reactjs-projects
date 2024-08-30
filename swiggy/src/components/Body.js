@@ -77,14 +77,14 @@ const Body = () => {
 
     return listOfRestaurants.length === 0 ? <Shimmer /> : (
         <div className="main-content">
-            <div className="container mx-auto mb-5">
+            <div className="container mx-auto mb-5 w-[1024px]">
                 <h1 className="text-2xl font-bold my-10">Top Restaurants Near to Your Location</h1>
                 {/* Filtering Data Options */}
                 <div className="filters-container container flex justify-between items-center">
                     <div className="search-container">
                         <div className="search-form flex justify-between items-center">
                             
-                            <input type="text" id="search-text" className="px-5 py-2 block w-full rounded-full border" value={searchText} onChange={(e) => {
+                            <input type="text" id="search-text" className="px-5 py-2 block w-80 rounded-full border" value={searchText} onChange={(e) => {
                                 //console.log("value from search field is:", e.target.value)
                                 setsearchText(e.target.value);
                             }} placeholder="Search for Restaurant and Food" />
@@ -135,7 +135,7 @@ const Body = () => {
                     }
                 </div> */}
                 {/* Restaurant Cards Container */}
-                <div className="res-cards-container mt-10 flex justify-between gap-4 items-center flex-wrap">
+                <div className="res-cards-container mt-10 flex justify-between gap-10 items-center flex-wrap">
 
                     {filteredRestaurants.length === 0 && searchText !== "" ? (
                         <h2 className="no-data-found">
