@@ -1,7 +1,7 @@
 const Footer = () => {
     return(
-        <footer>
-            <div className="container">
+        <footer className="bg-slate-900 text-white py-4 px-5">
+            <div className="container w-[1024px] mx-auto flex justify-between items-center">
                 <div>
                     &copy;2024 All Rights Reserved
                 </div>

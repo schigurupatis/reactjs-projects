@@ -156,9 +156,9 @@ const Body = () => {
 
                 {/* Load More Button (optional) */}
                 {hasMore && (
-                    <div className="container">
-                        <div className="load-more-container">
-                            <button className="btn btn-load-more" onClick={handleLoadMore}>
+                    <div className="container w-[1024] mx-auto">
+                        <div className="load-more-container flex justify-center items-center my-16">
+                            <button className="btn btn-load-more bg-orange-600 text-white font-bold px-5 py-3 rounded-full" onClick={handleLoadMore}>
                                 Load More
                             </button>
                         </div>
