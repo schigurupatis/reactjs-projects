@@ -24,4 +24,20 @@ return(
 )
 }
 
+
+export const withDiscountLabel = (RestaurantCard) => {
+    return (props) => {
+        return (
+            <div>
+                <label className="absolute bg-black text-white px-3 py-1 rounded-e-2xl text-xs">
+                    Discount
+                </label>
+                <RestaurantCard {...props} />
+            </div>
+        )
+    }
+}
+
+
+
 export default RestaurantCard

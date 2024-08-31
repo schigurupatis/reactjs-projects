@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard"
+import RestaurantCard, { withDiscountLabel } from "./RestaurantCard"
 import { useState, useEffect } from "react"
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -15,8 +15,10 @@ const Body = () => {
     const [pageNumber, setPageNumber] = useState(1); // New state for pagination
     const [hasMore, setHasMore] = useState(true); // New state for loading indicator
 
+    const RestaurantCardDiscount = withDiscountLabel(RestaurantCard)
 
-    console.log("body rendered")
+
+    console.log("body rendered", listOfRestaurants)
     // useEffect(() => {
     //     //console.log("useEffect Called")
     //     fetchData();
@@ -32,7 +34,6 @@ const Body = () => {
         try {
             const data = await fetch(url)
             const json = await data.json();
-            //console.log(json)
 
             if (json.statusCode === 1) {
                 console.error("Error fetching data:", json.statusMessage);
@@ -145,9 +146,14 @@ const Body = () => {
                         //filteredRestaurants.map((restaurant) => ( console.log(restaurant.info.id) ))
                         filteredRestaurants.map((restaurant) => (
                         <Link to={"/restaurant/" + restaurant.info.id} key={restaurant.info.id}>
-                            <RestaurantCard resData={restaurant} key={restaurant.info.id}  />
+                            {/* Discount Restaurant Card */}
+                            {
+                                restaurant.info.aggregatedDiscountInfoV3 ? <RestaurantCardDiscount resData={restaurant} key={restaurant.info.id} /> : <RestaurantCard resData={restaurant} key={restaurant.info.id}  />
+                            }
+                            {/* <RestaurantCard resData={restaurant} key={restaurant.info.id}  /> */}
                         </Link>
                         ))
+
                     )}
 
                     
