@@ -1,3 +1,5 @@
+import ItemList from "./ItemList"
+
 const MenuCategories = ({data}) => {
     console.log(data)
     return (
@@ -9,7 +11,7 @@ const MenuCategories = ({data}) => {
                         <span className="font-bold">^</span>
                     </div>
                     <div className="accordion-body p-4">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, minus?</p>
+                        <ItemList items={data.itemCards} />
                     </div>
                 </div>
                 <div className="pt-4 bg-slate-200"></div>
