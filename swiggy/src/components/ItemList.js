@@ -11,7 +11,7 @@ const ItemList = ({items}) => {
                 </div>
                 <div className="flex flex-col items-center">
                     <img src={CDN_URL + item.card.info.imageId} alt="" className="w-[156px] h-[144px] min-w-[156px] min-h-[144px] max-w-[156px] max-h-[144px] rounded-lg" />
-                    <button className="bg-slate-200 border shadow-md font-bold rounded-lg px-5 py-2 text-green-800 w-4/5 -mt-6">ADD</button>
+                    <button className="bg-slate-200 border shadow-md font-bold rounded-lg px-5 py-2 text-green-600 w-4/5 -mt-6">ADD</button>
                 </div>
             </div>)
         }
