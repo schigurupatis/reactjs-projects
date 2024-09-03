@@ -12,7 +12,7 @@ const RestaurantMenu = () => {
 
     const resInfo = useRestaurantMenu(resId)
 
-    const [showIndex, setShowIndex] = useState(2);
+    const [showIndex, setShowIndex] = useState(0);
 
     const dummyData = "Dummy Data Goes Here"
 

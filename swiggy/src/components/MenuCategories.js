@@ -4,11 +4,11 @@ import ItemList from "./ItemList"
 const MenuCategories = ({data, itemList, setShowIndex, dummy}) => {
     //console.log(data)
 
-    //const [itemList, setItemList] = useState(false);
+    //const [itemList, setItemList] = useState();
 
     const handleClick = () => {
         //console.log("header clicked")
-        //setItemList(!itemList)
+        //setItemList()
         setShowIndex()
     }
 

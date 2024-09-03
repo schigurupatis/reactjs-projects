@@ -2,9 +2,13 @@ import { useState } from "react"
 import { LOGO_URL } from "../utils/constants"
 import { Link } from "react-router-dom"
 import useOnlineStatus from "../utils/useOnlineStatus"
+import { useContext } from "react"
+import UserContext from "../utils/UserContext"
 
 const Header = () => {
     const [btnNameReact, setbtnNameReact] = useState("LogIn")
+    const {loggedInUser} = useContext(UserContext)
+    //console.log(data)
 
     const onlineStatus = useOnlineStatus()
 
@@ -30,6 +34,7 @@ const Header = () => {
                             }}>{btnNameReact}</a></li>
                             <li><Link to="/cart">Cart</Link></li>
                             <li><Link to="/grocery">Grocery</Link></li>
+                            <li><Link to="/">{loggedInUser}</Link></li>
 
                         </ul>
                     </nav>
