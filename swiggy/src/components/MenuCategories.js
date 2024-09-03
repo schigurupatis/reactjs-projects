@@ -1,14 +1,14 @@
 import { useState } from "react"
 import ItemList from "./ItemList"
 
-const MenuCategories = ({data}) => {
+const MenuCategories = ({data, itemList}) => {
     //console.log(data)
 
-    const [itemList, setItemList] = useState(false);
+    //const [itemList, setItemList] = useState(false);
 
     const handleClick = () => {
         //console.log("header clicked")
-        setItemList(!itemList)
+        //setItemList(!itemList)
     }
 
     return (

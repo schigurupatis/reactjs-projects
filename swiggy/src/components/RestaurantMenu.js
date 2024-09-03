@@ -79,7 +79,8 @@ const RestaurantMenu = () => {
                     </div>
                     <div className="menu-categories">
                         {
-                            categories.map((category) => <MenuCategories data={category?.card?.card} key={category?.card?.card.title} />)
+                            // Controlled Component(Parent)
+                            categories.map((category, index) => <MenuCategories data={category?.card?.card} key={category?.card?.card.title} itemList={index === 0 ? true : false} />)
                         }
                     </div>
                 </div>
