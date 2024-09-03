@@ -12,6 +12,8 @@ const RestaurantMenu = () => {
 
     const resInfo = useRestaurantMenu(resId)
 
+    const [showIndex, setShowIndex] = useState(2);
+
     // useEffect(() => {
     //     fetchMenu();
     // }, [])
@@ -34,6 +36,8 @@ const RestaurantMenu = () => {
     // console.log(categories)
     const categories = resInfo.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter((c) => c.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory");
     console.log(categories);
+
+    
 
     return (
         <div>
@@ -80,7 +84,12 @@ const RestaurantMenu = () => {
                     <div className="menu-categories">
                         {
                             // Controlled Component(Parent)
-                            categories.map((category, index) => <MenuCategories data={category?.card?.card} key={category?.card?.card.title} itemList={index === 0 ? true : false} />)
+                            categories.map((category, index) => <MenuCategories 
+                                data={category?.card?.card} 
+                                key={category?.card?.card.title} 
+                                itemList={index === showIndex ? true : false}
+                                setShowIndex={() => setShowIndex(index)}  
+                            />)
                         }
                     </div>
                 </div>
