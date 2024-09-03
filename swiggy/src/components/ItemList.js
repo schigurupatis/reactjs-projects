@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { CDN_URL } from "../utils/constants";
 
-const ItemList = ({items}) => {
+const ItemList = ({items, dummy}) => {
+    //console.log(dummy)
 
     return <div>
         {

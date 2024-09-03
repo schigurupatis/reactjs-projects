@@ -14,6 +14,8 @@ const RestaurantMenu = () => {
 
     const [showIndex, setShowIndex] = useState(2);
 
+    const dummyData = "Dummy Data Goes Here"
+
     // useEffect(() => {
     //     fetchMenu();
     // }, [])
@@ -35,7 +37,7 @@ const RestaurantMenu = () => {
     // const categories = resInfo.cards[4].groupedCard.cardGroupMap.REGULAR.cards.filter((c) => c.card.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
     // console.log(categories)
     const categories = resInfo.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter((c) => c.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory");
-    console.log(categories);
+    //console.log(categories);
 
     
 
@@ -89,6 +91,7 @@ const RestaurantMenu = () => {
                                 key={category?.card?.card.title} 
                                 itemList={index === showIndex ? true : false}
                                 setShowIndex={() => setShowIndex(index)}  
+                                dummy={dummyData}
                             />)
                         }
                     </div>

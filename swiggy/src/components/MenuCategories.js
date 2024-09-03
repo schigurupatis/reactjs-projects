@@ -1,7 +1,7 @@
 import { useState } from "react"
 import ItemList from "./ItemList"
 
-const MenuCategories = ({data, itemList, setShowIndex}) => {
+const MenuCategories = ({data, itemList, setShowIndex, dummy}) => {
     //console.log(data)
 
     //const [itemList, setItemList] = useState(false);
@@ -22,7 +22,7 @@ const MenuCategories = ({data, itemList, setShowIndex}) => {
                     </div>
                     <div className="accordion-body p-4">
                         {
-                            itemList && <ItemList items={data.itemCards} />
+                            itemList && <ItemList items={data.itemCards} dummy={dummy} />
                         }
                     </div>
                 </div>
