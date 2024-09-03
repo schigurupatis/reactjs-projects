@@ -34,7 +34,7 @@ const Header = () => {
                             }}>{btnNameReact}</a></li>
                             <li><Link to="/cart">Cart</Link></li>
                             <li><Link to="/grocery">Grocery</Link></li>
-                            <li><Link to="/">{loggedInUser}</Link></li>
+                            <li><Link to="/user-profile">{loggedInUser}</Link></li>
 
                         </ul>
                     </nav>
