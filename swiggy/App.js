@@ -23,17 +23,23 @@ const Grocery = lazy(() => import("./src/components/Grocery"))
 const Applayout = () => {
   
   const [userName, setUserName] = useState();
+  const [userPhone, setUserPhone] = useState();
+  const [userEmail, setUserEmail] = useState();
 
   useEffect(()=>{
     const data = {
       name: "Santha Kumar",
+      phone: "9392441426",
+      email: "schigurupatis@gmail.com",
     };
     setUserName(data.name)
+    setUserPhone(data.phone)
+    setUserEmail(data.email)
   }, [])
 
 
     return(
-      <UserContext.Provider value={{loggedInUser: userName}}>
+      <UserContext.Provider value={{loggedInUser: userName, loggedInUserPhone: userPhone, loggedInUserEmail: userEmail}}>
         <div className="app">
             <Header />
             <Outlet />

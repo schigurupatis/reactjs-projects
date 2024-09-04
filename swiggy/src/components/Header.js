@@ -8,7 +8,7 @@ import UserContext from "../utils/UserContext"
 const Header = () => {
     const [btnNameReact, setbtnNameReact] = useState("LogIn")
     const {loggedInUser} = useContext(UserContext)
-    //console.log(data)
+    //console.log(loggedInUser)
 
     const onlineStatus = useOnlineStatus()
 
