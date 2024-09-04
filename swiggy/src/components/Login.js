@@ -4,7 +4,7 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 import { useState } from "react"
 import { Link } from "react-router-dom"
 
-const Registration = () => {
+const Login = () => {
 
     const [passwordType, setPasswordType] = useState("password");
     const [cPasswordType, setCPasswordType] = useState("password");
@@ -18,15 +18,14 @@ const Registration = () => {
     };
 
 
-
   return (
     <div>
-        <div className="container w-[500px] mx-auto my-10">
+        <div className="container w-[500px] mx-auto my-10  min-h-screen">
             <div className="flex justify-start flex-col my-8">
                 <h1 className="text-2xl font-bold text-slate-900 my-2">
-                    Sign up
+                    Sign in
                 </h1>
-                <p><span>or <Link to="/login" className="text-orange-500">login to your account</Link></span></p>
+                <p><span>or <Link to="/registration" className="text-orange-500">create your account</Link></span></p>
             </div>
             <form>
                 <div className="flex justify-start flex-col mb-4">
@@ -34,16 +33,6 @@ const Registration = () => {
                         Phone Number
                     </label>
                     <input type="text" id="phone" placeholder="Edit Phone Number" className="border bg-slate-200 px-3 py-2 rounded-md outline-none" />
-                </div>
-                <div className="flex justify-start flex-col mb-4">
-                    <label htmlFor="name" className="mb-1 font-medium">
-                        Name
-                    </label>
-                    <input type="text" id="name" placeholder="Edit Name" className="border bg-slate-200 px-3 py-2 rounded-md outline-none" />
-                </div>
-                <div className="flex justify-start flex-col mb-4">
-                    <label htmlFor="email" className="mb-1 font-medium">Email</label>
-                    <input type="email" id="email" placeholder="Edit Email" className="border bg-slate-200 px-3 py-2 rounded-md outline-none" />
                 </div>
                 <div className="flex justify-start flex-col mb-4 relative">
                     <label htmlFor="password" className="mb-1 font-medium">Password</label>
@@ -59,22 +48,8 @@ const Registration = () => {
                         onClick={handlePasswordIcon}
                     />
                 </div>
-                <div className="flex justify-start flex-col mb-4 relative">
-                    <label htmlFor="c-password" className="mb-1 font-medium">Confirm Password</label>
-                    <input
-                        type={cPasswordType}
-                        id="c-password"
-                        placeholder="Edit Confirm Password"
-                        className="border bg-slate-200 px-3 py-2 rounded-md outline-none"
-                    />
-                    <FontAwesomeIcon
-                        icon={cPasswordType === "password" ? faEye : faEyeSlash}
-                        className="absolute top-10 right-2 cursor-pointer"
-                        onClick={handleCPasswordIcon}
-                    />
-                </div>
                 <div className="flex justify-end mb-4 mt-7 gap-3">
-                    <button type="submit" className="btn bg-orange-500 px-3 py-2 rounded-md text-white">Register</button>
+                    <button type="submit" className="btn bg-orange-500 px-3 py-2 rounded-md text-white">Login</button>
                 </div>
             </form>
         </div>
@@ -82,4 +57,4 @@ const Registration = () => {
   )
 }
 
-export default Registration
+export default Login

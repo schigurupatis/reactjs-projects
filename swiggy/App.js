@@ -13,6 +13,8 @@ import Shimmer from "./src/components/Shimmer"
 //import Grocery from "./src/components/Grocery"
 import UserContext from "./src/utils/UserContext"
 import UserProfile from "./src/components/UserProfile"
+import Registration from "./src/components/Registration"
+import Login from "./src/components/Login"
 
 
 const Grocery = lazy(() => import("./src/components/Grocery"))
@@ -78,6 +80,14 @@ const appRouter = createBrowserRouter([
       {
         path: "/user-profile",
         element: <UserProfile />
+      },
+      {
+        path: "/registration",
+        element: <Registration />
+      },
+      {
+        path: "/login",
+        element: <Login />
       },
     ],
     errorElement: <Error />
