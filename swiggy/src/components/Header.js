@@ -12,10 +12,31 @@ const Header = () => {
 
   const onlineStatus = useOnlineStatus();
 
+  const [openDropDownMenu, setOpenDropDownMenu] = useState(false);
+
   const FlyoutLink = ({ children, href, FlyoutContent }) => {
+    const showFlyout = openDropDownMenu && FlyoutContent;
+
     return (
       <div>
-        <a href="#">{children}</a>
+        <a href={href}>
+          {children}
+          {showFlyout && <FlyoutContent />}
+        </a>
+      </div>
+    );
+  };
+
+  const UserProfileMenu = () => {
+    return (
+      <div className="w-64 h-24 bg-white text-black p-6 shadow-xl">
+        <ul>
+          <li>Profile</li>
+          <li>Orders</li>
+          <li>Favourites</li>
+          <li>Payments</li>
+          <li>Logout</li>
+        </ul>
       </div>
     );
   };
@@ -84,12 +105,16 @@ const Header = () => {
               <li>
                 <Link to="/grocery">Grocery</Link>
               </li>
-              {/* <li>
-                <Link to="/user-profile">{loggedInUser}</Link>
-              </li> */}
-              <li>
-                <FlyoutLink className="text-black">
-                  <Link to="/user-profile">{loggedInUser}</Link>
+              <li
+                onMouseEnter={() => setOpenDropDownMenu(true)}
+                onMouseLeave={() => setOpenDropDownMenu(false)}
+              >
+                <FlyoutLink
+                  className="text-black"
+                  href="/user-profile"
+                  FlyoutContent={UserProfileMenu}
+                >
+                  {loggedInUser}
                 </FlyoutLink>
               </li>
             </ul>
