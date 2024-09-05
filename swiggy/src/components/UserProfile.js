@@ -6,8 +6,14 @@ import { useContext } from "react";
 import UserContext from "../utils/UserContext";
 
 const UserProfile = () => {
-  const { loggedInUser, loggedInUserPhone, loggedInUserEmail } =
-    useContext(UserContext);
+  const {
+    loggedInUser,
+    loggedInUserPhone,
+    loggedInUserEmail,
+    setUserName,
+    setUserPhone,
+    setUserEmail,
+  } = useContext(UserContext);
 
   const [passwordType, setPasswordType] = useState("password");
   const [cPasswordType, setCPasswordType] = useState("password");
@@ -71,6 +77,8 @@ const UserProfile = () => {
                 type="text"
                 id="phone"
                 placeholder="Edit Phone Number"
+                value={loggedInUserPhone}
+                onChange={(e) => setUserPhone(e.target.value)}
                 className="border bg-slate-200 px-3 py-2 rounded-md outline-none"
               />
             </div>
@@ -82,6 +90,8 @@ const UserProfile = () => {
                 type="text"
                 id="name"
                 placeholder="Edit Name"
+                value={loggedInUser}
+                onChange={(e) => setUserName(e.target.value)}
                 className="border bg-slate-200 px-3 py-2 rounded-md outline-none"
               />
             </div>
@@ -93,6 +103,8 @@ const UserProfile = () => {
                 type="email"
                 id="email"
                 placeholder="Edit Email"
+                value={loggedInUserEmail}
+                onChange={(e) => setUserEmail(e.target.value)}
                 className="border bg-slate-200 px-3 py-2 rounded-md outline-none"
               />
             </div>
