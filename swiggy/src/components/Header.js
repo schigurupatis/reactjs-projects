@@ -22,8 +22,9 @@ const Header = () => {
         <a href={href}>
           {children}
           {showFlyout && (
-            <div className="absolute left-1/2 top-12  -translate-x-1/2">
+            <div className="absolute left-1/2 top-12  -translate-x-1/2 border-t-2 border-orange-500">
               <div className="absolute -top-6 left-0 right-0 h-6 bg-transparent"></div>
+              <div className="absolute left-1/2 top-0 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rotate-45 bg-white z-10 border-t-2 border-l-2 border-orange-500"></div>
               <FlyoutContent />
             </div>
           )}
