@@ -6,7 +6,7 @@ import { useContext } from "react";
 import UserContext from "../utils/UserContext";
 
 const Header = () => {
-  const [btnNameReact, setbtnNameReact] = useState("LogIn");
+  const [btnNameReact, setbtnNameReact] = useState("Login");
   const { loggedInUser } = useContext(UserContext);
   //console.log(loggedInUser)
 
@@ -18,10 +18,15 @@ const Header = () => {
     const showFlyout = openDropDownMenu && FlyoutContent;
 
     return (
-      <div>
+      <div className="relative">
         <a href={href}>
           {children}
-          {showFlyout && <FlyoutContent />}
+          {showFlyout && (
+            <div className="absolute left-1/2 top-12  -translate-x-1/2">
+              <div className="absolute -top-6 left-0 right-0 h-6 bg-transparent"></div>
+              <FlyoutContent />
+            </div>
+          )}
         </a>
       </div>
     );
@@ -29,13 +34,24 @@ const Header = () => {
 
   const UserProfileMenu = () => {
     return (
-      <div className="w-64 h-24 bg-white text-black p-6 shadow-xl">
+      <div className="w-48 h-48 bg-white text-black px-6 py-3 shadow-xl">
         <ul>
-          <li>Profile</li>
-          <li>Orders</li>
-          <li>Favourites</li>
-          <li>Payments</li>
-          <li>Logout</li>
+          <li className="py-1">Profile</li>
+          <li className="py-1">Orders</li>
+          <li className="py-1">Favourites</li>
+          <li className="py-1">Payments</li>
+          <li className="py-1">
+            <a
+              href="#"
+              onClick={() => {
+                btnNameReact === "Login"
+                  ? setbtnNameReact("Logout")
+                  : setbtnNameReact("Login");
+              }}
+            >
+              {btnNameReact}
+            </a>
+          </li>
         </ul>
       </div>
     );
@@ -86,18 +102,6 @@ const Header = () => {
               </li>
               <li>
                 <Link to="/contactus">ContactUs</Link>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  onClick={() => {
-                    btnNameReact === "LogIn"
-                      ? setbtnNameReact("LogOut")
-                      : setbtnNameReact("LogIn");
-                  }}
-                >
-                  {btnNameReact}
-                </a>
               </li>
               <li>
                 <Link to="/cart">Cart</Link>
