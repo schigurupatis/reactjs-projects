@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import { useContext } from "react";
 import UserContext from "../utils/UserContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
 const Header = () => {
   const [btnNameReact, setbtnNameReact] = useState("Login");
@@ -103,10 +105,13 @@ const Header = () => {
                 <Link to="/contactus">ContactUs</Link>
               </li>
               <li>
-                <Link to="/cart">Cart</Link>
+                <Link to="/grocery">Grocery</Link>
               </li>
               <li>
-                <Link to="/grocery">Grocery</Link>
+                <Link to="/cart">
+                  <FontAwesomeIcon icon={faCartShopping} className="mr-1" />
+                  Cart
+                </Link>
               </li>
               <li
                 onMouseEnter={() => setOpenDropDownMenu(true)}
@@ -117,6 +122,7 @@ const Header = () => {
                   to="/user-profile"
                   FlyoutContent={UserProfileMenu}
                 >
+                  <FontAwesomeIcon icon={faUser} className="mr-1" />
                   {loggedInUser}
                 </FlyoutLink>
               </li>

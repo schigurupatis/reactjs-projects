@@ -1,4 +1,5 @@
 # Parcel
+
 - Parcel is creating following things for us
 - Dev Build
 - Local Server
@@ -17,3 +18,12 @@
 - HTTPs
 - Tree shaking Algorithm (will remove unused code for you)
 - different bundles for Dev and Production modes
+
+# Redux Toolkit
+
+- Install @reduxjs/toolkit and react-redux
+- Build our Store
+- Connect our store to our app
+- Create Slice (Cart Slice)
+- Dispatch(Action)
+- Selector(Subscribing to component using Selector)
