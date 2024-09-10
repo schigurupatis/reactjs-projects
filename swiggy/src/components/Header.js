@@ -16,8 +16,8 @@ const Header = () => {
   const onlineStatus = useOnlineStatus();
 
   //Subscribing to the store using selector
-  const cartItems = useSelector((store) => store.cart);
-  console.log(cartItems.length);
+  const cartItems = useSelector((store) => store.cart.items);
+  console.log(cartItems);
 
   const [openDropDownMenu, setOpenDropDownMenu] = useState(false);
 
