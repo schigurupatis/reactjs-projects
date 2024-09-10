@@ -1,17 +1,25 @@
-import Header from "./Header"
+import Header from "./Header";
 import Footer from "./Footer";
+import { useSelector } from "react-redux";
+import ItemList from "./ItemList";
 
 const Cart = () => {
-    return (
-        <div>
-            <div className="main-content">
-                <div className="container p-20">
-                        <h1 className="mb-1">Your Cart</h1>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                </div>
-            </div>
+  const cartItems = useSelector((store) => store.cart.items);
+  console.log(cartItems);
+
+  return (
+    <div className="bg-slate-100">
+      <div className="main-content res-menu">
+        <div className="container w-[800px] mx-auto py-10">
+          <h1 className="text-2xl font-bold text-slate-900">
+            Your Cart has{" "}
+            <span className="text-orange-600">{cartItems.length}</span> items
+          </h1>
+          <ItemList items={cartItems} />
         </div>
-    )
-}
+      </div>
+    </div>
+  );
+};
 
 export default Cart;
