@@ -6,6 +6,7 @@ import { useContext } from "react";
 import UserContext from "../utils/UserContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [btnNameReact, setbtnNameReact] = useState("Login");
@@ -13,6 +14,10 @@ const Header = () => {
   //console.log(loggedInUser)
 
   const onlineStatus = useOnlineStatus();
+
+  //Subscribing to the store using selector
+  const cartItems = useSelector((store) => store.cart);
+  console.log(cartItems.length);
 
   const [openDropDownMenu, setOpenDropDownMenu] = useState(false);
 
@@ -110,7 +115,7 @@ const Header = () => {
               <li>
                 <Link to="/cart">
                   <FontAwesomeIcon icon={faCartShopping} className="mr-1" />
-                  Cart
+                  Cart - ({cartItems.length} Items)
                 </Link>
               </li>
               <li
