@@ -43,3 +43,6 @@
 - Configure Parcel config file to disable default babel transpilation
 - Jest Configuration (npx just --init)
 - Install JSDom Library
+- Install @babel/preset-react - to make JSX in the test cases
+- Include @babel/preset-react inside my babel config
+- Install @testing-library/jest-dom

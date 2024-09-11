@@ -1,17 +1,77 @@
-import Header from "./Header"
-import Footer from "./Footer"
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const ContactUs = () => {
-    return (
-        <div>
-            <div className="main-content">
-                <div className="container p-20">
-                        <h1 className="mb-1">ContactUs</h1>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                </div>
-            </div>
+  return (
+    <div>
+      <div className="container w-[500px] mx-auto my-10">
+        <div className="flex justify-start flex-col my-8">
+          <h1 className="text-2xl font-bold text-slate-900 my-2">
+            Send Us a Message
+          </h1>
         </div>
-    )
-}
+        <form>
+          <div className="flex justify-start flex-col mb-4">
+            <label htmlFor="name" className="mb-1 font-medium">
+              Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              placeholder="Enter Name"
+              className="border bg-slate-200 px-3 py-2 rounded-md outline-none"
+            />
+          </div>
+          <div className="flex justify-start flex-col mb-4">
+            <label htmlFor="phone" className="mb-1 font-medium">
+              Phone
+            </label>
+            <input
+              type="text"
+              id="phone"
+              placeholder="Enter Phone"
+              className="border bg-slate-200 px-3 py-2 rounded-md outline-none"
+            />
+          </div>
+          <div className="flex justify-start flex-col mb-4">
+            <label htmlFor="email" className="mb-1 font-medium">
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              placeholder="Enter Email"
+              className="border bg-slate-200 px-3 py-2 rounded-md outline-none"
+            />
+          </div>
+          <div className="flex justify-start flex-col mb-4">
+            <label htmlFor="message" className="mb-1 font-medium">
+              Message
+            </label>
+            <textarea
+              type="text"
+              id="message"
+              placeholder="Enter Message"
+              className="border
+              bg-slate-200 px-3 py-2 rounded-md outline-none"
+            />
+          </div>
 
-export default ContactUs
+          <div className="flex justify-end mb-4 mt-7 gap-3">
+            <button
+              type="submit"
+              className="btn bg-orange-500 px-3 py-2 rounded-md text-white"
+            >
+              Send Message
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default ContactUs;
