@@ -41,3 +41,5 @@
 - Install Babel Dependencies
 - Configure Babel
 - Configure Parcel config file to disable default babel transpilation
+- Jest Configuration (npx just --init)
+- Install JSDom Library
