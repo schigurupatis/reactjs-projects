@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const Cart = () => {
   const cartItems = useSelector((store) => store.cart.items);
-  console.log(cartItems);
+  //console.log(cartItems);
   // cartItems.forEach((item) => {
   //   console.log(
   //     `  - ${item.card.info.name}: Rs. ${item.card.info.price / 100}`
