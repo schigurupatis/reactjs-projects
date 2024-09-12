@@ -6,7 +6,14 @@ const RestaurantCard = (props) => {
   const { resData } = props;
   //console.log(props);
   //console.log(resData)
-  const { name, avgRatingString, sla, cuisines, veg } = resData?.info;
+  const {
+    name,
+    avgRatingString,
+    sla,
+    cuisines,
+    veg,
+    aggregatedDiscountInfoV3,
+  } = resData?.info;
 
   // const {loggedInUser} = useContext(UserContext)
 
