@@ -109,7 +109,15 @@ const Header = () => {
                 <Link to="/contactus">ContactUs</Link>
               </li>
               <li>
-                <Link to="/grocery">Grocery</Link>
+                <button
+                  onClick={() => {
+                    btnNameReact === "Login"
+                      ? setbtnNameReact("Logout")
+                      : setbtnNameReact("Login");
+                  }}
+                >
+                  {btnNameReact}
+                </button>
               </li>
               <li>
                 <Link to="/cart">

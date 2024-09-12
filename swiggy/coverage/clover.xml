@@ -1,31 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1726138579656" clover="3.2.0">
-  <project timestamp="1726138579656" name="All files">
-    <metrics statements="37" coveredstatements="28" conditionals="8" coveredconditionals="3" methods="16" coveredmethods="7" elements="61" coveredelements="38" complexity="0" loc="37" ncloc="37" packages="2" files="8" classes="8"/>
+<coverage generated="1726140266954" clover="3.2.0">
+  <project timestamp="1726140266954" name="All files">
+    <metrics statements="38" coveredstatements="29" conditionals="10" coveredconditionals="4" methods="17" coveredmethods="8" elements="65" coveredelements="41" complexity="0" loc="38" ncloc="38" packages="2" files="8" classes="8"/>
     <package name="components">
-      <metrics statements="19" coveredstatements="15" conditionals="8" coveredconditionals="3" methods="9" coveredmethods="5"/>
+      <metrics statements="20" coveredstatements="16" conditionals="10" coveredconditionals="4" methods="10" coveredmethods="6"/>
       <file name="ContactUs.js" path="D:\F Drive\My-Learnings\namasthe-reactjs-projects\reactjs-projects\swiggy\src\components\ContactUs.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="7" count="1" type="stmt"/>
         <line num="8" count="4" type="stmt"/>
       </file>
       <file name="Header.js" path="D:\F Drive\My-Learnings\namasthe-reactjs-projects\reactjs-projects\swiggy\src\components\Header.js">
-        <metrics statements="15" coveredstatements="11" conditionals="8" coveredconditionals="3" methods="7" coveredmethods="3"/>
+        <metrics statements="16" coveredstatements="12" conditionals="10" coveredconditionals="4" methods="8" coveredmethods="4"/>
         <line num="11" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
-        <line num="19" count="2" type="stmt"/>
-        <line num="22" count="1" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
-        <line num="25" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="27" count="1" type="stmt"/>
-        <line num="41" count="1" type="stmt"/>
+        <line num="12" count="5" type="stmt"/>
+        <line num="13" count="5" type="stmt"/>
+        <line num="16" count="5" type="stmt"/>
+        <line num="19" count="9" type="stmt"/>
+        <line num="22" count="5" type="stmt"/>
+        <line num="24" count="5" type="stmt"/>
+        <line num="25" count="5" type="cond" truecount="1" falsecount="1"/>
+        <line num="27" count="5" type="stmt"/>
+        <line num="41" count="5" type="stmt"/>
         <line num="42" count="0" type="stmt"/>
         <line num="52" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="65" count="1" type="stmt"/>
-        <line num="121" count="0" type="stmt"/>
-        <line num="122" count="0" type="stmt"/>
+        <line num="65" count="5" type="stmt"/>
+        <line num="114" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="129" count="0" type="stmt"/>
+        <line num="130" count="0" type="stmt"/>
       </file>
       <file name="Sum.js" path="D:\F Drive\My-Learnings\namasthe-reactjs-projects\reactjs-projects\swiggy\src\components\Sum.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
@@ -60,13 +61,13 @@
       <file name="useOnlineStatus.js" path="D:\F Drive\My-Learnings\namasthe-reactjs-projects\reactjs-projects\swiggy\src\utils\useOnlineStatus.js">
         <metrics statements="8" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="2"/>
         <line num="3" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
+        <line num="5" count="5" type="stmt"/>
+        <line num="8" count="5" type="stmt"/>
+        <line num="9" count="4" type="stmt"/>
         <line num="10" count="0" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
+        <line num="13" count="4" type="stmt"/>
         <line num="14" count="0" type="stmt"/>
-        <line num="21" count="1" type="stmt"/>
+        <line num="21" count="5" type="stmt"/>
       </file>
     </package>
   </project>
