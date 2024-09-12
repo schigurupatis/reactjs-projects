@@ -17,7 +17,7 @@ const Header = () => {
 
   //Subscribing to the store using selector
   const cartItems = useSelector((store) => store.cart.items);
-  console.log(cartItems);
+  //console.log(cartItems);
 
   const [openDropDownMenu, setOpenDropDownMenu] = useState(false);
 
@@ -47,8 +47,7 @@ const Header = () => {
           <li className="py-1">Favourites</li>
           <li className="py-1">Payments</li>
           <li className="py-1">
-            <a
-              href="#"
+            <button
               onClick={() => {
                 btnNameReact === "Login"
                   ? setbtnNameReact("Logout")
@@ -56,7 +55,7 @@ const Header = () => {
               }}
             >
               {btnNameReact}
-            </a>
+            </button>
           </li>
         </ul>
       </div>
