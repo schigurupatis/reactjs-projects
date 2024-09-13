@@ -105,6 +105,7 @@ const Body = () => {
               <button
                 className="btn btn-search rounded-full bg-orange-600 text-white border px-5 py-2 font-medium"
                 role="button"
+                aria-label="Search"
                 onClick={() => {
                   //console.log("value from button clicked is:", searchText)
                   if (searchText) {

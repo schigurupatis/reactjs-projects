@@ -14,9 +14,7 @@ const RestaurantCard = (props) => {
     veg,
     aggregatedDiscountInfoV3,
   } = resData?.info;
-
   // const {loggedInUser} = useContext(UserContext)
-
   return (
     <div className="res-card card  rounded-2xl w-[226px] h-72">
       <div className="res-img w-full h-[146px] rounded-2xl overflow-hidden">
