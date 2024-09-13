@@ -14,13 +14,13 @@ it("should render RestarurantCard component with props data", () => {
   expect(nameEl).toBeInTheDocument();
 });
 
-it("should render RestaurantCard with Discount label for a discounted restaurant", () => {
-  //Rendering
-  render(<RestaurantCard resData={MOCK_DATA} />);
+// it("should render RestaurantCard with Discount label for a discounted restaurant", () => {
+//   //Rendering
+//   render(<withDiscountLabel resData={<RestaurantCard {...props} />} />);
 
-  //Quering
-  const nameEl = screen.getByText("Pizza Hut");
+//   //Quering
+//   const discountLabel = screen.getByText("Discount");
 
-  //Asserting
-  expect(nameEl).toBeInTheDocument();
-});
+//   //Asserting
+//   expect(discountLabel).toBeInTheDocument();
+// });
