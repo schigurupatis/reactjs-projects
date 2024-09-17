@@ -1,6 +1,8 @@
 // import { useContext } from "react";
 import { CDN_URL } from "../utils/constants";
 // import UserContext from "../utils/UserContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 
 const RestaurantCard = (props) => {
   const { resData } = props;
@@ -13,18 +15,25 @@ const RestaurantCard = (props) => {
     cuisines,
     veg,
     aggregatedDiscountInfoV3,
+    locality,
   } = resData?.info;
   // const {loggedInUser} = useContext(UserContext)
-  const truncatedName = name.length > 20 ? `${name.substring(0, 20)}...` : name;
+  const truncatedName = name.length > 23 ? `${name.substring(0, 23)}...` : name;
+  const combinedCuisinesLength = cuisines.join(", ").length;
+  const truncatedCuisines =
+    combinedCuisinesLength > 23
+      ? `${cuisines.join(", ").substring(0, 23)}...`
+      : cuisines.join(", ");
 
   return (
     <div className="res-card card  rounded-2xl w-[226px] h-72">
-      <div className="res-img w-full h-[146px] rounded-2xl overflow-hidden">
+      <div className="res-img w-full h-[146px] rounded-2xl overflow-hidden relative">
         <img
           src={CDN_URL + resData.info.cloudinaryImageId}
           alt="RestaurantName"
           className="w-full h-full object-cover"
         />
+        <div className="shadow-gradient"></div>
       </div>
       <div className="res-data px-4 py-3">
         <h3 className="name font-bold text-md text-slate-900">
@@ -40,8 +49,8 @@ const RestaurantCard = (props) => {
                 fill="none"
                 role="img"
                 aria-hidden="true"
-                strokeColor="rgba(2, 6, 12, 0.92)"
-                fillColor="rgba(2, 6, 12, 0.92)"
+                strokecolor="rgba(2, 6, 12, 0.92)"
+                fillcolor="rgba(2, 6, 12, 0.92)"
               >
                 <circle
                   cx="10"
@@ -62,8 +71,8 @@ const RestaurantCard = (props) => {
                     y2="19"
                     gradientUnits="userSpaceOnUse"
                   >
-                    <stop stop-color="#21973B"></stop>
-                    <stop offset="1" stop-color="#128540"></stop>
+                    <stop stopColor="#21973B"></stop>
+                    <stop offset="1" stopColor="#128540"></stop>
                   </linearGradient>
                 </defs>
               </svg>
@@ -74,10 +83,14 @@ const RestaurantCard = (props) => {
             {sla.deliveryTime} Mins
           </h4>
         </div>
-        <h5 className="quisines">{cuisines.join(", ")}</h5>
-        <h5 className="quisines">{veg}</h5>
-        {/* <hr />
-      <h6>UserName is: {loggedInUser}</h6> */}
+        <h5 className="quisines text-gray-500 font-medium">
+          {truncatedCuisines}
+        </h5>
+        <h5 className="quisines text-gray-500 font-medium">
+          <FontAwesomeIcon icon={faMapMarkerAlt} className="" />
+          &nbsp;
+          {locality}
+        </h5>
       </div>
     </div>
   );
@@ -87,7 +100,7 @@ export const withDiscountLabel = (RestaurantCard) => {
   return (props) => {
     return (
       <div className="relative">
-        <label className="absolute top-4 bg-black text-white px-3 py-1 rounded-e-2xl text-xs">
+        <label className="absolute top-4 left-0 z-10 bg-black text-white px-3 py-1 rounded-e-2xl text-xs">
           Discount
         </label>
         <RestaurantCard {...props} />

@@ -2,11 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-/* .res-img img::after {
-    content: "";
-    height: calc(81px);
-    background: linear-gradient(rgba(27, 30, 36, 0) 0%, rgb(27, 30, 36) 84.21%);
-} */
+.res-card:hover {
+  transform: scale(0.95, 0.95);
+  transform-origin: center center;
+  transition: 0.1s ease-in;
+}
+.res-card {
+  transform-origin: center center;
+  transition: 0.1s ease-in;
+}
+.shadow-gradient {
+  height: 81px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background: linear-gradient(rgba(27, 30, 36, 0) 0%, rgb(27, 30, 36) 84.21%);
+}
 
 .cartitems > div > div {
   background-color: white;

@@ -213,7 +213,7 @@ const Body = () => {
         </div>
 
         {/* Load More Button (optional) */}
-        {hasMore && (
+        {/* {hasMore && (
           <div className="container w-[1024] mx-auto">
             <div className="load-more-container flex justify-center items-center my-16">
               <button
@@ -224,7 +224,7 @@ const Body = () => {
               </button>
             </div>
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );
