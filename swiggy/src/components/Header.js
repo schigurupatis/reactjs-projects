@@ -7,6 +7,8 @@ import UserContext from "../utils/UserContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 const Header = () => {
   const [btnNameReact, setbtnNameReact] = useState("Login");
@@ -98,7 +100,7 @@ const Header = () => {
             <b className="ms-6 min-w-[200px]">Food Delivery App</b>
           </Link>
         </div>
-        <nav className="md:static absolute bg-white md:min-h-fit min-h-[60vh] left-0 top-[30%] w-full sm:p-5">
+        <nav className="lg:static absolute bg-white md:min-h-fit min-h-[60vh] left-0 top-[-100%] w-full sm:p-5">
           <ul className="flex justify-end md:flex-row flex-col md:gap-3 lg:gap-6 font-semibold">
             <li>Online Status: {onlineStatus ? "🟢" : "🔴"}</li>
             <li>
@@ -139,6 +141,7 @@ const Header = () => {
             </li>
           </ul>
         </nav>
+        <FontAwesomeIcon icon={faBars} className="cursor-pointer lg:hidden" />
       </div>
     </header>
   );
