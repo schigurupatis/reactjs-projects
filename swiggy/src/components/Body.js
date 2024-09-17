@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 const Body = () => {
   // const [listOfRestaurants, setListOfRestaurants] = useState(resList);
@@ -94,7 +96,7 @@ const Body = () => {
               <input
                 type="text"
                 id="search-text"
-                className="px-5 py-2 block w-80 rounded-full border"
+                className="px-5 py-2 block w-80 rounded-l-full border :focus:border-none focus:outline-none"
                 value={searchText}
                 onChange={(e) => {
                   //console.log("value from search field is:", e.target.value)
@@ -103,7 +105,7 @@ const Body = () => {
                 placeholder="Search for Restaurant and Food"
               />
               <button
-                className="btn btn-search rounded-full bg-orange-600 text-white border px-5 py-2 font-medium"
+                className="btn btn-search rounded-r-full bg-orange-600 text-white border border-orange-600 px-5 py-2 font-medium"
                 role="button"
                 aria-label="Search"
                 onClick={() => {
@@ -119,7 +121,7 @@ const Body = () => {
                   }
                 }}
               >
-                Search
+                <FontAwesomeIcon icon={faSearch} className="" />
               </button>
             </div>
           </div>
