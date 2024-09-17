@@ -8,9 +8,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faClose } from "@fortawesome/free-solid-svg-icons";
 
 const Header = () => {
+  const navEl = document.querySelector("nav");
+  const [toggleMenuIcon, setToggleMenuIcon] = useState(false);
+  const handleToggleMenuIcon = () => {
+    setToggleMenuIcon(!toggleMenuIcon);
+    if (toggleMenuIcon) {
+      navEl.style.top = "-100%";
+    } else {
+      navEl.style.top = "14%";
+    }
+  };
+
   const [btnNameReact, setbtnNameReact] = useState("Login");
   const { loggedInUser } = useContext(UserContext);
   //console.log(loggedInUser)
@@ -141,7 +152,11 @@ const Header = () => {
             </li>
           </ul>
         </nav>
-        <FontAwesomeIcon icon={faBars} className="cursor-pointer lg:hidden" />
+        <FontAwesomeIcon
+          icon={toggleMenuIcon ? faClose : faBars}
+          className="cursor-pointer lg:hidden"
+          onClick={handleToggleMenuIcon}
+        />
       </div>
     </header>
   );
