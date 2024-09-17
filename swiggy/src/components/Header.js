@@ -63,8 +63,8 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-white shadow-lg p-4">
-      <div className="flex justify-between items-center container mx-auto  w-[1200px]">
+    <header className="bg-white shadow-lg p-4 z-20">
+      <div className="flex justify-between items-center container mx-auto w-[92%]">
         <div className="">
           <Link to="/" className="flex justify-between items-center">
             {/* <img src={LOGO_URL} alt="" className="w-56" /> */}
@@ -95,52 +95,50 @@ const Header = () => {
                 </linearGradient>
               </defs>
             </svg>
-            <b className="ms-6">Food Delivery App</b>
+            <b className="ms-6 min-w-[200px]">Food Delivery App</b>
           </Link>
         </div>
-        <div className="navigation">
-          <nav>
-            <ul className="flex gap-10 font-semibold">
-              <li>Online Status: {onlineStatus ? "🟢" : "🔴"}</li>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/contactus">ContactUs</Link>
-              </li>
-              <li>
-                <button
-                  onClick={() => {
-                    btnNameReact === "Login"
-                      ? setbtnNameReact("Logout")
-                      : setbtnNameReact("Login");
-                  }}
-                >
-                  {btnNameReact}
-                </button>
-              </li>
-              <li>
-                <Link to="/cart">
-                  <FontAwesomeIcon icon={faCartShopping} className="mr-1" />
-                  Cart - ({cartItems.length} Items)
-                </Link>
-              </li>
-              <li
-                onMouseEnter={() => setOpenDropDownMenu(true)}
-                onMouseLeave={() => setOpenDropDownMenu(false)}
+        <nav className="md:static absolute bg-white md:min-h-fit min-h-[60vh] left-0 top-[30%] w-full sm:p-5">
+          <ul className="flex justify-end md:flex-row flex-col md:gap-3 lg:gap-6 font-semibold">
+            <li>Online Status: {onlineStatus ? "🟢" : "🔴"}</li>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/contactus">ContactUs</Link>
+            </li>
+            <li>
+              <button
+                onClick={() => {
+                  btnNameReact === "Login"
+                    ? setbtnNameReact("Logout")
+                    : setbtnNameReact("Login");
+                }}
               >
-                <FlyoutLink
-                  className="text-black"
-                  to="/user-profile"
-                  FlyoutContent={UserProfileMenu}
-                >
-                  <FontAwesomeIcon icon={faUser} className="mr-1" />
-                  {loggedInUser}
-                </FlyoutLink>
-              </li>
-            </ul>
-          </nav>
-        </div>
+                {btnNameReact}
+              </button>
+            </li>
+            <li>
+              <Link to="/cart">
+                <FontAwesomeIcon icon={faCartShopping} className="mr-1" />
+                Cart - ({cartItems.length} Items)
+              </Link>
+            </li>
+            <li
+              onMouseEnter={() => setOpenDropDownMenu(true)}
+              onMouseLeave={() => setOpenDropDownMenu(false)}
+            >
+              <FlyoutLink
+                className="text-black"
+                to="/user-profile"
+                FlyoutContent={UserProfileMenu}
+              >
+                <FontAwesomeIcon icon={faUser} className="mr-1" />
+                {loggedInUser}
+              </FlyoutLink>
+            </li>
+          </ul>
+        </nav>
       </div>
     </header>
   );

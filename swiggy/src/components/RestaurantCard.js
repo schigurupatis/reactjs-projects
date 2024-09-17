@@ -18,7 +18,7 @@ const RestaurantCard = (props) => {
     locality,
   } = resData?.info;
   // const {loggedInUser} = useContext(UserContext)
-  const truncatedName = name.length > 23 ? `${name.substring(0, 23)}...` : name;
+  const truncatedName = name.length > 20 ? `${name.substring(0, 20)}...` : name;
   const combinedCuisinesLength = cuisines.join(", ").length;
   const truncatedCuisines =
     combinedCuisinesLength > 23
