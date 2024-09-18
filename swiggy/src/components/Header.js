@@ -18,7 +18,7 @@ const Header = () => {
     if (toggleMenuIcon) {
       navEl.style.top = "-100%";
     } else {
-      navEl.style.top = "14%";
+      navEl.style.top = "31%";
     }
   };
 
@@ -111,7 +111,7 @@ const Header = () => {
             <b className="ms-6 min-w-[200px]">Food Delivery App</b>
           </Link>
         </div>
-        <nav className="lg:static absolute bg-white md:min-h-fit min-h-[60vh] left-0 top-[-100%] w-full sm:p-5">
+        <nav className="lg:static absolute lg:bg-white lg:text-black bg-orange-600 text-white md:min-h-fit min-h-[60vh] left-0 top-[-100%] w-full lg:p-0 p-5">
           <ul className="flex justify-end md:flex-row flex-col md:gap-3 lg:gap-6 font-semibold">
             <li>Online Status: {onlineStatus ? "🟢" : "🔴"}</li>
             <li>

@@ -85,13 +85,13 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="main-content">
-      <div className="container md:w-[1024px] w-full mx-auto mb-5 flex flex-col items-center lg:items-start">
+      <div className="container lg:w-[1024px] w-full mx-auto mb-5 flex flex-col items-center lg:items-start">
         <h1 className="text-2xl font-bold my-10">
           Top Restaurants Near to Your Location
         </h1>
 
         {/* Filtering Data Options */}
-        <div className="filters-container container md:w-[1024px] w-full mx-auto flex lg:justify-between justify-center items-center lg:items-start flex-wrap flex-col md:flex-row gap-5">
+        <div className="filters-container container lg:w-[1024px] w-full mx-auto flex lg:justify-between justify-center items-center lg:items-start flex-wrap flex-col md:flex-row gap-5">
           <div className="search-container">
             <div className="search-form flex justify-between items-center">
               <input
@@ -185,28 +185,19 @@ const Body = () => {
                     }
                 </div> */}
         {/* Restaurant Cards Container */}
-        <div className="flex flex-wrap gap-10 mt-10 flex-col sm:flex-row">
+        <div className="flex flex-wrap lg:gap-10 gap-5 mt-10 flex-col sm:flex-row lg:justify-between justify-center">
           {filteredRestaurants.length === 0 && searchText !== "" ? (
             <h2 className="no-data-found">No Data Found for your Search</h2>
           ) : (
             //filteredRestaurants.map((restaurant) => ( console.log(restaurant.info.id) ))
             filteredRestaurants.map((restaurant) => (
-              <div>
-                <Link
-                  to={"/restaurant/" + restaurant.info.id}
-                  key={restaurant.info.id}
-                >
+              <div key={restaurant.info.id}>
+                <Link to={"/restaurant/" + restaurant.info.id}>
                   {/* Discount Restaurant Card */}
                   {restaurant.info.aggregatedDiscountInfoV3 ? (
-                    <RestaurantCardDiscount
-                      resData={restaurant}
-                      key={restaurant.info.id}
-                    />
+                    <RestaurantCardDiscount resData={restaurant} />
                   ) : (
-                    <RestaurantCard
-                      resData={restaurant}
-                      key={restaurant.info.id}
-                    />
+                    <RestaurantCard resData={restaurant} />
                   )}
                   {/* <RestaurantCard resData={restaurant} key={restaurant.info.id}  /> */}
                 </Link>
