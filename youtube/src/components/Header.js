@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { logo } from "../utils/constants";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -12,7 +11,7 @@ import {
 
 function Header() {
   return (
-    <header className="shadow-lg px-7 py-2">
+    <header className="shadow-md px-7 py-2">
       <nav className="flex justify-between items-center">
         <div className="logo-sec flex gap-5 items-center w-2/12">
           <FontAwesomeIcon icon={faBars} />

@@ -1,7 +1,29 @@
 import React from "react";
+import Button from "./Button";
 
 function Buttons() {
-  return <div>Buttons</div>;
+  const buttonNames = [
+    "All",
+    "Music",
+    "Telugu Cinema",
+    "News",
+    "Live",
+    "Sports",
+    "Trailers",
+    "Mixes",
+    "Engineering",
+    "Dance",
+    "Tours",
+    "Cricket",
+  ];
+
+  return (
+    <div className="flex justify-start items-center gap-3 my-4">
+      {buttonNames.map((buttonName) => (
+        <Button key={buttonName} data={buttonName} />
+      ))}
+    </div>
+  );
 }
 
 export default Buttons;

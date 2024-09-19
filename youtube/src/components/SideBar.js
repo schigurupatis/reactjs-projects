@@ -6,12 +6,11 @@ import {
   faPhotoVideo,
   faMusic,
   faUserCircle,
-  faClocks,
 } from "@fortawesome/free-solid-svg-icons";
 
 function SideBar() {
   return (
-    <div className="px-5 py-7">
+    <div>
       <div className="flex flex-col border-b border-gray-300 pb-3 mb-3">
         <div className="flex items-center gap-3 justify-start cursor-pointer hover:bg-gray-100 px-3 py-2 rounded-lg">
           <FontAwesomeIcon icon={faHome} className="min-w-5" />
@@ -30,14 +29,32 @@ function SideBar() {
           YouTube Music
         </div>
       </div>
-      <div className="flex flex-col gap-3 border-b border-gray-300 pb-3 mb-3">
+      <div className="flex flex-col border-b border-gray-300 pb-3 mb-3">
         <h3>You</h3>
-        <div>Your Channel</div>
-        <div>History</div>
-        <div>Playlists</div>
-        <div>Your Videos</div>
-        <div>Your Courses</div>
-        <div>Watch Later</div>
+        <div className="flex items-center gap-3 justify-start cursor-pointer hover:bg-gray-100 px-3 py-2 rounded-lg">
+          <FontAwesomeIcon icon={faUserCircle} />
+          Your Channel
+        </div>
+        <div className="flex items-center gap-3 justify-start cursor-pointer hover:bg-gray-100 px-3 py-2 rounded-lg">
+          <FontAwesomeIcon icon={faMusic} />
+          History
+        </div>
+        <div className="flex items-center gap-3 justify-start cursor-pointer hover:bg-gray-100 px-3 py-2 rounded-lg">
+          <FontAwesomeIcon icon={faMusic} />
+          Playlists
+        </div>
+        <div className="flex items-center gap-3 justify-start cursor-pointer hover:bg-gray-100 px-3 py-2 rounded-lg">
+          <FontAwesomeIcon icon={faMusic} />
+          Your Videos
+        </div>
+        <div className="flex items-center gap-3 justify-start cursor-pointer hover:bg-gray-100 px-3 py-2 rounded-lg">
+          <FontAwesomeIcon icon={faMusic} />
+          Your Courses
+        </div>
+        <div className="flex items-center gap-3 justify-start cursor-pointer hover:bg-gray-100 px-3 py-2 rounded-lg">
+          <FontAwesomeIcon icon={faMusic} />
+          Watch Later
+        </div>
       </div>
       <div className="flex flex-col gap-3 border-b border-gray-300 pb-3 mb-3">
         <h3>Explore</h3>

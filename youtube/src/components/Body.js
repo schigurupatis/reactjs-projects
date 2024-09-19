@@ -6,10 +6,10 @@ import SideBar from "./SideBar";
 function Body() {
   return (
     <div className="flex justify-start gap-3">
-      <div className="w-2/12">
+      <div className="w-2/12 px-3 py-3">
         <SideBar />
       </div>
-      <div className="w-10/12">
+      <div className="w-10/12 ps-3 pe-7 py-3">
         <Buttons />
         <VideoContainer />
       </div>
