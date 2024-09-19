@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { logo } from "../constants";
+import { logo } from "../utils/constants";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
@@ -14,12 +14,12 @@ function Header() {
   return (
     <header className="shadow-lg px-7 py-2">
       <nav className="flex justify-between items-center">
-        <div className="logo-sec flex gap-5 items-center w-[1/12]">
+        <div className="logo-sec flex gap-5 items-center w-2/12">
           <FontAwesomeIcon icon={faBars} />
           <img src={logo} alt="YouTube" className="w-24" />
         </div>
-        <div className="search-sec w-[10/12]">
-          <div className="w-full flex">
+        <div className="search-sec w-8/12">
+          <div className="w-full flex justify-center items-center">
             <input
               type="text"
               placeholder="Search"
@@ -30,7 +30,7 @@ function Header() {
             </button>
           </div>
         </div>
-        <div className="user-sec w-[1/12]">
+        <div className="user-sec w-2/12 flex justify-center items-center">
           <ul className="flex justify-between items-center gap-5">
             <li>
               <a href="#">
