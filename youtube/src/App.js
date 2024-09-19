@@ -1,10 +1,10 @@
-import logo from "./logo.svg";
 import "./App.css";
+import Header from "./components/Header";
 
 function App() {
   return (
     <div>
-      <h3 className="text-lg font-bold text-red-600">YouTube App Goes Here</h3>
+      <Header />
     </div>
   );
 }
