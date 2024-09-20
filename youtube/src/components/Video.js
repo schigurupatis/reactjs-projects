@@ -20,7 +20,7 @@ const Video = ({ info }) => {
   const modifiepublishedAt = publishedAt.slice(0, 10);
 
   return (
-    <div className="my-5 w-[342px]">
+    <div className="my-5 w-[343px]">
       <img
         src={thumbnails.standard.url}
         alt={title}

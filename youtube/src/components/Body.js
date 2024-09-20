@@ -8,10 +8,10 @@ const Body = () => {
     <div>
       <Header />
       <div className="flex justify-start gap-3 px-3 py-5 w-full">
-        <SideBar className="w-3/12 px-3 py-3" />
+        <SideBar className="" />
         {/* <MainContainer />
         <Watch /> */}
-        <Outlet className="w-9/12 ps-3 pe-7 py-3" />
+        <Outlet className="" />
       </div>
     </div>
   );
