@@ -9,13 +9,25 @@ import {
   faUser,
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch } from "react-redux";
+import { setMenuOpen } from "../utils/appSlice";
 
 const Header = () => {
+  const dispatch = useDispatch();
+
+  const handleToggle = () => {
+    dispatch(setMenuOpen());
+  };
+
   return (
     <header className="shadow-md px-7 py-2">
       <nav className="flex justify-between items-center">
         <div className="logo-sec flex gap-5 items-center w-2/12">
-          <FontAwesomeIcon icon={faBars} />
+          <FontAwesomeIcon
+            icon={faBars}
+            onClick={() => handleToggle()}
+            className="cursor-pointer"
+          />
           <Link to="/">
             <img src={logo} alt="YouTube" className="w-24" />
           </Link>

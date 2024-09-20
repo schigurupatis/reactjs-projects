@@ -7,36 +7,39 @@ import {
   faPhotoVideo,
   faMusic,
 } from "@fortawesome/free-solid-svg-icons";
+import { useSelector } from "react-redux";
 
 const SideBar = () => {
+  const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
+
+  if (!isMenuOpen) return null;
+
   return (
-    <div>
-      <div className="flex flex-col border-b border-gray-300 pb-3 mb-3">
-        <Link to="/">
-          <div className="flex items-center gap-3 justify-start cursor-pointer hover:bg-gray-100 px-3 py-2 rounded-lg">
-            <FontAwesomeIcon icon={faHome} className="min-w-5" />
-            Home
-          </div>
-        </Link>
-        <Link to="/">
-          <div className="flex items-center gap-3 justify-start cursor-pointer hover:bg-gray-100 px-3 py-2 rounded-lg">
-            <FontAwesomeIcon icon={faPlay} className="min-w-5" />
-            Shorts
-          </div>
-        </Link>
-        <Link to="/">
-          <div className="flex items-center gap-3 justify-start cursor-pointer hover:bg-gray-100 px-3 py-2 rounded-lg">
-            <FontAwesomeIcon icon={faPhotoVideo} className="min-w-5" />
-            Subscriptions
-          </div>
-        </Link>
-        <Link to="/">
-          <div className="flex items-center gap-3 justify-start cursor-pointer hover:bg-gray-100 px-3 py-2 rounded-lg">
-            <FontAwesomeIcon icon={faMusic} className="min-w-5" />
-            Music
-          </div>
-        </Link>
-      </div>
+    <div className="flex flex-col border-b border-gray-300 pb-3 mb-3">
+      <Link to="/">
+        <div className="flex items-center gap-3 justify-start cursor-pointer hover:bg-gray-100 px-3 py-2 rounded-lg">
+          <FontAwesomeIcon icon={faHome} className="min-w-5" />
+          Home
+        </div>
+      </Link>
+      <Link to="/">
+        <div className="flex items-center gap-3 justify-start cursor-pointer hover:bg-gray-100 px-3 py-2 rounded-lg">
+          <FontAwesomeIcon icon={faPlay} className="min-w-5" />
+          Shorts
+        </div>
+      </Link>
+      <Link to="/">
+        <div className="flex items-center gap-3 justify-start cursor-pointer hover:bg-gray-100 px-3 py-2 rounded-lg">
+          <FontAwesomeIcon icon={faPhotoVideo} className="min-w-5" />
+          Subscriptions
+        </div>
+      </Link>
+      <Link to="/">
+        <div className="flex items-center gap-3 justify-start cursor-pointer hover:bg-gray-100 px-3 py-2 rounded-lg">
+          <FontAwesomeIcon icon={faMusic} className="min-w-5" />
+          Music
+        </div>
+      </Link>
     </div>
   );
 };
