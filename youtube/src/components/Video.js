@@ -12,15 +12,14 @@ const Video = ({ info }) => {
   const modifedTitle = title.length > 60 ? title.slice(0, 60) + "..." : title;
   const modifedchannelTitle =
     channelTitle.length > 26 ? channelTitle.slice(0, 26) + "..." : channelTitle;
-  const modifiedviewCount = viewCount
-    .toString()
-    .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  // const modifiedviewCount = viewCount
+  //   .toString()
+  //   .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   const viewCountThousands = viewCount / 1000;
   const modifiepublishedAt = publishedAt.slice(0, 10);
 
   return (
-    // <div></div>
     <div className="my-5 w-[342px]">
       <img
         src={thumbnails.standard.url}

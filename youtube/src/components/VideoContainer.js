@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Video from "./Video";
 import { YOUTUBE_VIDEOS_API } from "../utils/constants";
+import { Link } from "react-router-dom";
 
 const VideoContainer = () => {
   const [videos, setVideos] = useState([]);
@@ -21,7 +22,10 @@ const VideoContainer = () => {
   return (
     <div className="flex flex-wrap justify-start items-top gap-4">
       {videos.map((video) => (
-        <Video key={video.id} info={video} />
+        // <Link to={`/watch?v=${video.id}`} key={video.id}>
+        <Link to="/watch" key={video.id}>
+          <Video info={video} />
+        </Link>
       ))}
     </div>
   );
