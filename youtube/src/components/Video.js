@@ -24,7 +24,7 @@ const Video = ({ info }) => {
       <img
         src={thumbnails.standard.url}
         alt={title}
-        className="w-[343px] h-[193px] rounded-xl"
+        className="w-[343px] h-[193px] rounded-xl object-cover"
       />
       <div className="flex justify-between items-top gap-1 w-full mt-3">
         <div className="w-2/12">

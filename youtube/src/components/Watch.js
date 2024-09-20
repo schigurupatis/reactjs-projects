@@ -1,7 +1,6 @@
 import React from "react";
 
 const Watch = () => {
-  //console.log(video);
   return (
     <div className="flex justify-start items-start gap-3">
       <div className="w-9/12">
