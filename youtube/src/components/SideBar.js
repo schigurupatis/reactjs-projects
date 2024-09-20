@@ -8,7 +8,7 @@ import {
   faUserCircle,
 } from "@fortawesome/free-solid-svg-icons";
 
-function SideBar() {
+const SideBar = () => {
   return (
     <div>
       <div className="flex flex-col border-b border-gray-300 pb-3 mb-3">
@@ -68,6 +68,6 @@ function SideBar() {
       </div>
     </div>
   );
-}
+};
 
 export default SideBar;

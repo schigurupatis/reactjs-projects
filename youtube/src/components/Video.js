@@ -1,24 +1,48 @@
 import React from "react";
-import { thumbnail } from "../utils/constants";
 
-function Video() {
+const Video = ({ info }) => {
+  console.log(info);
+
+  //console.log(info.id);
+
+  const { snippet, statistics } = info;
+  const { title, channelTitle, publishedAt, thumbnails } = snippet;
+  const { viewCount } = statistics;
+
+  const modifedTitle = title.length > 60 ? title.slice(0, 60) + "..." : title;
+  const modifedchannelTitle =
+    channelTitle.length > 26 ? channelTitle.slice(0, 26) + "..." : channelTitle;
+  const modifiedviewCount = viewCount
+    .toString()
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+  const viewCountThousands = viewCount / 1000;
+  const modifiepublishedAt = publishedAt.slice(0, 10);
+
   return (
-    <div className="my-5">
+    // <div></div>
+    <div className="my-5 w-[342px]">
       <img
-        src={thumbnail}
-        alt="thumbnail"
+        src={thumbnails.standard.url}
+        alt={title}
         className="w-[343px] h-[193px] rounded-xl"
       />
       <div className="flex justify-between items-top gap-1 w-full mt-3">
         <div className="w-2/12">
-          <img src={thumbnail} alt="avatar" className="w-9 h-9 rounded-full" />
+          <img
+            src={thumbnails.standard.url}
+            alt="avatar"
+            className="w-9 h-9 rounded-full"
+          />
         </div>
         <div className="flex flex-col w-9/12">
-          <h1 className="font-bold">Title</h1>
-          <h5 className="text-gray-500">Channel Name</h5>
+          <h1 className="font-bold">{modifedTitle}</h1>
+          <h5 className="text-gray-500">{modifedchannelTitle}</h5>
           <h6 className="text-gray-500">
-            <span className="mr-4">Views</span>
-            <span>Time</span>
+            <span className="mr-4 text-sm">
+              {viewCountThousands + "K"} Views
+            </span>
+            <span className="mr-4 text-sm">{modifiepublishedAt}</span>
           </h6>
         </div>
         <div className="w-1/12">
@@ -38,6 +62,6 @@ function Video() {
       </div>
     </div>
   );
-}
+};
 
 export default Video;

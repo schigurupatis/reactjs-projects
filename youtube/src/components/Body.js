@@ -3,7 +3,7 @@ import VideoContainer from "./VideoContainer";
 import Buttons from "./Buttons";
 import SideBar from "./SideBar";
 
-function Body() {
+const Body = () => {
   return (
     <div className="flex justify-start gap-3">
       <div className="w-2/12 px-3 py-3">
@@ -15,6 +15,6 @@ function Body() {
       </div>
     </div>
   );
-}
+};
 
 export default Body;

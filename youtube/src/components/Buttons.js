@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "./Button";
 
-function Buttons() {
+const Buttons = () => {
   const buttonNames = [
     "All",
     "Music",
@@ -24,6 +24,6 @@ function Buttons() {
       ))}
     </div>
   );
-}
+};
 
 export default Buttons;

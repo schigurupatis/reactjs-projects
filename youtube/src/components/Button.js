@@ -1,6 +1,6 @@
 import React from "react";
 
-function Button({ data }) {
+const Button = ({ data }) => {
   return (
     <button
       type="button"
@@ -9,6 +9,6 @@ function Button({ data }) {
       {data}
     </button>
   );
-}
+};
 
 export default Button;

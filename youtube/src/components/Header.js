@@ -9,7 +9,7 @@ import {
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
 
-function Header() {
+const Header = () => {
   return (
     <header className="shadow-md px-7 py-2">
       <nav className="flex justify-between items-center">
@@ -51,6 +51,6 @@ function Header() {
       </nav>
     </header>
   );
-}
+};
 
 export default Header;
