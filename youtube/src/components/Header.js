@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { logo } from "../utils/constants";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,12 +11,30 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
 import { setMenuOpen } from "../utils/appSlice";
+import { useState } from "react";
+import { YOUTUBE_SEARCH_API } from "../utils/constants";
 
 const Header = () => {
   const dispatch = useDispatch();
 
   const handleToggle = () => {
     dispatch(setMenuOpen());
+  };
+
+  const [searchquery, setSearchQuery] = useState("");
+  //console.log(searchquery);
+
+  useEffect(() => {
+    //console.log("searchquery is", searchquery);
+    const timer = setTimeout(() => getSearchSuggestions(), 200);
+
+    return () => clearTimeout(timer);
+  }, [searchquery]);
+
+  const getSearchSuggestions = async () => {
+    const data = await fetch(YOUTUBE_SEARCH_API + searchquery);
+    const json = await data.json();
+    console.log("Search Suggestions: ", json[1]);
   };
 
   return (
@@ -38,6 +56,7 @@ const Header = () => {
               type="text"
               placeholder="Search"
               className="border-gray-300 border px-5 py-2 rounded-l-full outline-none focus:border-blue-500 active:border-blue-500 focus:shadow-inner w-[500px]"
+              onChange={(e) => setSearchQuery(e.target.value)}
             />
             <button className="border-gray-300 border px-5 py-2 rounded-r-full">
               <FontAwesomeIcon icon={faSearch} className="text-gray-400" />
