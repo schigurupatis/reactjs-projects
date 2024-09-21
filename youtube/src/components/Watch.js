@@ -25,14 +25,14 @@ const Watch = () => {
       `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoID}&key=${YOUTUBE_API_KEY}`
     );
     const json = await data.json();
-    //console.log(json.items[0].snippet);
+    console.log("Specific Video: ", json.items[0].snippet);
     setSpecificVideo(json.items[0]);
   };
 
-  console.log(specificVideo);
+  //console.log(specificVideo);
 
   const title = specificVideo?.snippet?.title;
-  //const channelTitle = specificVideo?.snippet?.channelTitle;
+  const channelTitle = specificVideo?.snippet?.channelTitle;
   const channelId = specificVideo?.snippet?.channelId;
   const thumbnails = specificVideo?.snippet?.thumbnails?.standard.url;
   const statistics = specificVideo?.statistics;
@@ -41,6 +41,7 @@ const Watch = () => {
 
   //getting specific channel id from url and displaying chanel data
   useEffect(() => {
+    if (!channelId) return;
     getSpecificChannel();
   }, [channelId]);
 
@@ -51,52 +52,71 @@ const Watch = () => {
       `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${channelId}&key=${YOUTUBE_API_KEY}`
     );
     const json = await data.json();
-    //console.log(json.items[0]);
+    console.log("Specific Channel: ", json.items[0]);
     setSpecificChannel(json.items[0]);
   };
 
-  console.log(specificChannel);
+  //console.log(specificChannel);
 
   const channelThumbnails = specificChannel?.snippet?.thumbnails?.default.url;
-  const channelTitle = specificChannel?.snippet?.title;
+  //const channelTitle = specificChannel?.snippet?.title;
   const channelSubscribers = specificChannel?.statistics?.subscriberCount;
 
   return (
     <div className="flex justify-start items-start gap-3">
       <div className="">
-        <iframe
-          width="853"
-          height="480"
-          src={`https://www.youtube.com/embed/${videoID}`}
-          title={title}
-          allowFullScreen
-          className="rounded-xl"
-        ></iframe>
-        <h1 className="text-xl font-bold my-3">{title}</h1>
-        <div className="flex justify-between items-start">
-          <div className="flex items-center gap-3">
-            <div>
-              <img
-                src={channelThumbnails}
-                alt={title}
-                className="rounded-full w-10 h-10"
-              />
+        {specificVideo && (
+          <div>
+            <iframe
+              width="853"
+              height="480"
+              src={`https://www.youtube.com/embed/${videoID}`}
+              title={title}
+              allowFullScreen
+              className="rounded-xl"
+            ></iframe>
+            <h1 className="text-xl font-bold my-3">{title}</h1>
+          </div>
+        )}
+        {specificChannel && (
+          <div>
+            <div className="flex justify-between items-start">
+              <div className="flex items-center gap-3">
+                <div>
+                  <img
+                    src={channelThumbnails}
+                    alt={title}
+                    className="rounded-full w-10 h-10"
+                  />
+                </div>
+                <div className="flex flex-col">
+                  <p className="text-md">{channelTitle}</p>
+                  <p className="text-sm text-gray-500">
+                    {channelSubscribers / 1000} Subscribers
+                  </p>
+                </div>
+              </div>
+              <div className="flex justify-between items-start gap-3">
+                <button className="bg-gray-200 px-4 py-2 rounded-full">
+                  {Math.round((likeCount / 1000) * 100) / 100}K Likes
+                </button>
+                <button className="bg-gray-200 px-4 py-2 rounded-full">
+                  Dislike
+                </button>
+                <button className="bg-gray-200 px-4 py-2 rounded-full">
+                  Share
+                </button>
+                <button className="bg-gray-200 px-4 py-2 rounded-full">
+                  Download
+                </button>
+              </div>
             </div>
-            <div>
-              <p>{channelTitle}</p>
-            </div>
-            <div>
-              <p>{channelSubscribers} Subscribers</p>
+            <div className="bg-slate-200 rounded-lg p-3 mt-3">
+              <div className="text-sm">{viewCount} Views</div>
             </div>
           </div>
-          <div className="flex justify-between items-start gap-3">
-            <button>{Math.round((likeCount / 1000) * 100) / 100}K Likes</button>
-            <button>Dislike</button>
-          </div>
-        </div>
-        <div className="bg-slate-200 rounded-lg p-3 mt-3">
-          <button>{viewCount}</button>
-        </div>
+        )}
+        {!specificVideo && !specificChannel && <p>Loading...</p>}
       </div>
       <div className="">
         <h6>Sidebar</h6>
