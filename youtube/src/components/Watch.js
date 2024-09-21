@@ -117,6 +117,9 @@ const Watch = () => {
           </div>
         )}
         {!specificVideo && !specificChannel && <p>Loading...</p>}
+        <div className="mt-3">
+          <h1 className="text-xl font-bold">Comments</h1>
+        </div>
       </div>
       <div className="">
         <h6>Sidebar</h6>

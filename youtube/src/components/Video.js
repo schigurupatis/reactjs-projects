@@ -63,4 +63,15 @@ const Video = ({ info }) => {
   );
 };
 
+export const AddVideo = ({ info }) => {
+  return (
+    <div className="">
+      <Video info={info} />
+      <h3 className="text-gray-500 text-sm text-center">
+        Sponsored - Add Video
+      </h3>
+    </div>
+  );
+};
+
 export default Video;
