@@ -7,7 +7,7 @@ const Body = () => {
   return (
     <div>
       <Header />
-      <div className="flex justify-start gap-3 px-3 py-5 w-full">
+      <div className="flex justify-start gap-3 px-5 py-5 w-full">
         <SideBar className="" />
         {/* <MainContainer />
         <Watch /> */}
