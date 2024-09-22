@@ -13,3 +13,10 @@ using Debouncing with 200ms
 
 - if difference between 2 key-strokes is > 200ms - then we make API Call
 - if difference between 2 key-strokes is not > 200ms - then we don't make API Call
+
+# Buliding Cache for Search Suggestions
+
+- Time complexity to search in an Array is = O(n) //Order of n
+- example is [i, ip, iph, ipho, iphone]
+- Time complexity to search in an Object is = O(1) //Order of 1 -- this is better
+- example is { i, ip, iph, ipho, iphone}

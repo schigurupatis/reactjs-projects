@@ -9,10 +9,11 @@ import {
   faUser,
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setMenuOpen } from "../utils/appSlice";
 import { useState } from "react";
 import { YOUTUBE_SEARCH_API } from "../utils/constants";
+import { cacheResults } from "../utils/searchSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -26,9 +27,17 @@ const Header = () => {
   const [searchSuggestions, setSearchSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
 
+  const searchCache = useSelector((store) => store.search);
+
   useEffect(() => {
     //console.log("searchquery is", searchquery);
-    const timer = setTimeout(() => getSearchSuggestions(), 200);
+    const timer = setTimeout(() => {
+      if (searchCache[searchquery]) {
+        setSearchSuggestions(searchCache[searchquery]);
+      } else {
+        getSearchSuggestions();
+      }
+    }, 200);
 
     return () => clearTimeout(timer);
   }, [searchquery]);
@@ -38,6 +47,9 @@ const Header = () => {
     const json = await data.json();
     console.log("Search Suggestions: ", json[1]);
     setSearchSuggestions(json[1]);
+
+    //update the store
+    dispatch(cacheResults({ [searchquery]: json[1] }));
   };
 
   return (
