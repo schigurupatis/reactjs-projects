@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { setMenuClose } from "../utils/appSlice";
 import { useSearchParams } from "react-router-dom";
 import { YOUTUBE_API_KEY } from "../utils/constants";
+import CommentsContainer from "./CommentsContainer";
 
 const Watch = () => {
   const dispatch = useDispatch();
@@ -119,6 +120,7 @@ const Watch = () => {
         {!specificVideo && !specificChannel && <p>Loading...</p>}
         <div className="mt-3">
           <h1 className="text-xl font-bold">Comments</h1>
+          <CommentsContainer />
         </div>
       </div>
       <div className="">
