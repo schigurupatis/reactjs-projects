@@ -2,7 +2,7 @@ import React from "react";
 
 const commentsData = [
   {
-    name: "1",
+    name: "Username of the commenter",
     avatar: "https://avatar.iran.liara.run/public",
     text: "This is a comment",
     replies: [
@@ -21,13 +21,13 @@ const commentsData = [
     ],
   },
   {
-    name: "2",
+    name: "Username of the commenter",
     avatar: "https://avatar.iran.liara.run/public",
     text: "This is a comment",
     replies: [],
   },
   {
-    name: "3",
+    name: "Username of the commenter",
     avatar: "https://avatar.iran.liara.run/public",
     text: "This is a comment",
     replies: [
@@ -47,8 +47,36 @@ const commentsData = [
   },
 ];
 
+const Comment = ({ data }) => {
+  const { name, avatar, text, replies } = data;
+  return (
+    <div className="flex gap-3">
+      <div>
+        <img src={avatar} alt={name} className="w-10 h-10 rounded-full" />
+      </div>
+      <div>
+        <h1 className="font-bold">{name}</h1>
+        <p>{text}</p>
+        <p>{replies}</p>
+        {/* {replies.map((reply) => (
+          <Comment key={reply.name} {...reply} />
+        ))} */}
+      </div>
+    </div>
+  );
+};
+
+const CommentList = ({ comments }) => {
+  return comments.map((comment, idx) => <Comment key={idx} data={comment} />);
+};
+
 const CommentsContainer = () => {
-  return <div>CommentsContainer</div>;
+  return (
+    <div>
+      <Comment data={commentsData[1]} />
+      {/* <CommentList comments={commentsData} /> */}
+    </div>
+  );
 };
 
 export default CommentsContainer;
