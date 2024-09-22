@@ -51,16 +51,29 @@ const Header = () => {
           </Link>
         </div>
         <div className="search-sec w-8/12">
-          <div className="w-full flex justify-center items-center">
-            <input
-              type="text"
-              placeholder="Search"
-              className="border-gray-300 border px-5 py-2 rounded-l-full outline-none focus:border-blue-500 active:border-blue-500 focus:shadow-inner w-[500px]"
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-            <button className="border-gray-300 border px-5 py-2 rounded-r-full">
-              <FontAwesomeIcon icon={faSearch} className="text-gray-400" />
-            </button>
+          <div className="">
+            <div className="w-full flex justify-center items-center">
+              <input
+                type="text"
+                placeholder="Search"
+                className="border-gray-300 border px-5 py-2 rounded-l-full outline-none focus:border-blue-500 active:border-blue-500 focus:shadow-inner w-[500px]"
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+              <button className="border-gray-300 border px-5 py-2 rounded-r-full">
+                <FontAwesomeIcon icon={faSearch} className="text-gray-400" />
+              </button>
+            </div>
+            <div className="w-full flex justify-center items-center relative">
+              <ul className="w-[560px] absolute top-0  bg-white py-5  border border-gray-200 rounded-xl">
+                <li className="cursor-pointer hover:bg-gray-100 px-3 py-1">
+                  <FontAwesomeIcon
+                    icon={faSearch}
+                    className="text-gray-400 mr-3"
+                  />
+                  Search Suggestions
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
         <div className="user-sec w-2/12 flex justify-center items-center">
