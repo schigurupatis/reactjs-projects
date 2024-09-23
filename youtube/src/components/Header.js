@@ -48,7 +48,7 @@ const Header = () => {
   const getSearchSuggestions = async () => {
     const data = await fetch(YOUTUBE_SEARCH_API + searchquery);
     const json = await data.json();
-    console.log("Search Suggestions: ", json[1]);
+    //console.log("Search Suggestions: ", json[1]);
     setSearchSuggestions(json[1]);
 
     //update the store
@@ -63,7 +63,7 @@ const Header = () => {
 
   const handleSuggestionSelect = (suggestion) => {
     setSelectedSearchSuggestion(suggestion);
-    console.log("Selected suggestion is:", suggestion);
+    //console.log("Selected suggestion is:", suggestion);
     setShowSuggestions(false);
 
     // Redirect to Results.js with the selected search query
