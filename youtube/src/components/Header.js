@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { logo } from "../utils/constants";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -17,6 +17,7 @@ import { cacheResults } from "../utils/searchSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleToggle = () => {
     dispatch(setMenuOpen());
@@ -26,6 +27,8 @@ const Header = () => {
   //console.log(searchquery);
   const [searchSuggestions, setSearchSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const [selectedSearchSuggestion, setSelectedSearchSuggestion] = useState("");
+  //console.log(selectedSearchSuggestion);
 
   const searchCache = useSelector((store) => store.search);
 
@@ -52,6 +55,24 @@ const Header = () => {
     dispatch(cacheResults({ [searchquery]: json[1] }));
   };
 
+  useEffect(() => {
+    if (selectedSearchSuggestion) {
+      setSearchQuery(selectedSearchSuggestion);
+    }
+  }, [selectedSearchSuggestion]);
+
+  const handleSuggestionSelect = (suggestion) => {
+    setSelectedSearchSuggestion(suggestion);
+    console.log("Selected suggestion is:", suggestion);
+    setShowSuggestions(false);
+
+    // Redirect to Results.js with the selected search query
+    //navigate(`/results?search_query=${suggestion}`);
+
+    const formattedQuery = suggestion.split(" ").join("+");
+    navigate(`/results?search_query=${formattedQuery}`);
+  };
+
   return (
     <header className="shadow-md px-7 py-2">
       <nav className="flex justify-between items-center">
@@ -75,6 +96,7 @@ const Header = () => {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 onFocus={() => setShowSuggestions(true)}
                 onBlur={() => setShowSuggestions(false)}
+                value={searchquery}
               />
               <button className="border-gray-300 border px-5 py-2 rounded-r-full">
                 <FontAwesomeIcon icon={faSearch} className="text-gray-400" />
@@ -87,6 +109,12 @@ const Header = () => {
                     <li
                       className="cursor-default hover:bg-gray-100 px-3 py-1"
                       key={suggestion}
+                      // onMouseDown={() => {
+                      //   setSelectedSearchSuggestion(suggestion);
+                      //   console.log("selected suggestion is:", suggestion);
+                      //   setShowSuggestions(false);
+                      // }}
+                      onMouseDown={() => handleSuggestionSelect(suggestion)}
                     >
                       <FontAwesomeIcon
                         icon={faSearch}

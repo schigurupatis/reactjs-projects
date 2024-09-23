@@ -63,7 +63,7 @@ const commentsData = [
 const Comment = ({ data }) => {
   const { name, avatar, text, replies } = data;
   return (
-    <div className="flex gap-3 my-2">
+    <div className="flex gap-3 my-2 border-l-2">
       <div>
         <img src={avatar} alt={name} className="w-10 rounded-full" />
       </div>
@@ -91,10 +91,10 @@ const CommentsList = ({ comments }) => {
 
 const CommentsContainer = () => {
   return (
-    <div>
+    <>
       {/* <Comment data={commentsData[1]} /> */}
       <CommentsList comments={commentsData} />
-    </div>
+    </>
   );
 };
 
