@@ -20,9 +20,7 @@ function App() {
 
   return (
     <Provider store={store}>
-      <div>
-        <RouterProvider router={appRouter}></RouterProvider>
-      </div>
+      <RouterProvider router={appRouter}></RouterProvider>
     </Provider>
   );
 }

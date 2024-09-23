@@ -4,7 +4,45 @@ const commentsData = [
   {
     name: "Username of the commenter",
     avatar: "https://avatar.iran.liara.run/public",
-    text: "This is a comment",
+    text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+    replies: [
+      {
+        name: "1.1",
+        avatar: "https://avatar.iran.liara.run/public",
+        text: "This is a reply",
+        replies: [
+          {
+            name: "1.1.1",
+            avatar: "https://avatar.iran.liara.run/public",
+            text: "This is a reply",
+            replies: [],
+          },
+          {
+            name: "1.1.2",
+            avatar: "https://avatar.iran.liara.run/public",
+            text: "This is a reply",
+            replies: [],
+          },
+        ],
+      },
+      {
+        name: "1.2",
+        avatar: "https://avatar.iran.liara.run/public",
+        text: "This is a reply",
+        replies: [],
+      },
+    ],
+  },
+  {
+    name: "Username of the commenter",
+    avatar: "https://avatar.iran.liara.run/public",
+    text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+    replies: [],
+  },
+  {
+    name: "Username of the commenter",
+    avatar: "https://avatar.iran.liara.run/public",
+    text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
     replies: [
       {
         name: "1.1",
@@ -20,61 +58,42 @@ const commentsData = [
       },
     ],
   },
-  {
-    name: "Username of the commenter",
-    avatar: "https://avatar.iran.liara.run/public",
-    text: "This is a comment",
-    replies: [],
-  },
-  {
-    name: "Username of the commenter",
-    avatar: "https://avatar.iran.liara.run/public",
-    text: "This is a comment",
-    replies: [
-      {
-        name: "3.1",
-        avatar: "https://avatar.iran.liara.run/public",
-        text: "This is a reply",
-        replies: [],
-      },
-      {
-        name: "3.2",
-        avatar: "https://avatar.iran.liara.run/public",
-        text: "This is a reply",
-        replies: [],
-      },
-    ],
-  },
 ];
 
 const Comment = ({ data }) => {
   const { name, avatar, text, replies } = data;
   return (
-    <div className="flex gap-3">
+    <div className="flex gap-3 my-2">
       <div>
-        <img src={avatar} alt={name} className="w-10 h-10 rounded-full" />
+        <img src={avatar} alt={name} className="w-10 rounded-full" />
       </div>
       <div>
         <h1 className="font-bold">{name}</h1>
         <p>{text}</p>
-        <p>{replies}</p>
-        {/* {replies.map((reply) => (
-          <Comment key={reply.name} {...reply} />
-        ))} */}
+        {/* <p>{replies}</p> */}
+        {/* Recursive rendering of replies */}
+        {replies && replies.length > 0 && (
+          <div className="ml-4 my-2">
+            <h4 className="font-bold text-sm">Replies</h4>
+            {replies.map((reply) => (
+              <Comment key={reply.name} data={reply} />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
 };
 
-const CommentList = ({ comments }) => {
+const CommentsList = ({ comments }) => {
   return comments.map((comment, idx) => <Comment key={idx} data={comment} />);
 };
 
 const CommentsContainer = () => {
   return (
     <div>
-      <Comment data={commentsData[1]} />
-      {/* <CommentList comments={commentsData} /> */}
+      {/* <Comment data={commentsData[1]} /> */}
+      <CommentsList comments={commentsData} />
     </div>
   );
 };

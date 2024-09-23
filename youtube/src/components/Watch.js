@@ -64,8 +64,8 @@ const Watch = () => {
   const channelSubscribers = specificChannel?.statistics?.subscriberCount;
 
   return (
-    <div className="flex justify-start items-start gap-3">
-      <div className="">
+    <>
+      <div className="w-8/12">
         {specificVideo && (
           <div>
             <iframe
@@ -93,7 +93,7 @@ const Watch = () => {
                 <div className="flex flex-col">
                   <p className="text-md">{channelTitle}</p>
                   <p className="text-sm text-gray-500">
-                    {channelSubscribers / 1000} Subscribers
+                    {(channelSubscribers / 1000) * 100}K Subscribers
                   </p>
                 </div>
               </div>
@@ -119,14 +119,14 @@ const Watch = () => {
         )}
         {!specificVideo && !specificChannel && <p>Loading...</p>}
         <div className="mt-3">
-          <h1 className="text-xl font-bold">Comments</h1>
+          <h1 className="text-xl font-bold mb-3">Comments</h1>
           <CommentsContainer />
         </div>
       </div>
-      <div className="">
+      <div className="w-4/12">
         <h6>Sidebar</h6>
       </div>
-    </div>
+    </>
   );
 };
 

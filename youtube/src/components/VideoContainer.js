@@ -20,7 +20,7 @@ const VideoContainer = () => {
   //console.log(videos[0]);
 
   return (
-    <div className="flex justify-start items-top flex-wrap gap-3">
+    <div className="flex justify-start items-top flex-wrap gap-3 w-full">
       {videos[0] && <AddVideo info={videos[0]} />}
       {videos.map((video) => (
         <Link to={`/watch?v=${video.id}`} key={video.id}>

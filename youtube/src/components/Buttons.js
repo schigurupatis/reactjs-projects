@@ -18,7 +18,7 @@ const Buttons = () => {
   ];
 
   return (
-    <div className="flex justify-start items-center gap-3 my-4">
+    <div className="flex justify-start items-center gap-3 my-4 w-full">
       {buttonNames.map((buttonName) => (
         <Button key={buttonName} data={buttonName} />
       ))}
