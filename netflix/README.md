@@ -1,8 +1,9 @@
-# Create React App
+# Netflix GPT
 
-# Config Tailwind CSS
-
-# Header Component Build
+- Create React App
+- Config Tailwind CSS
+- Header Component Build
+- Login Form
 
 # Features
 
