@@ -8,6 +8,11 @@
 - Sign Up Form
 - Form Validation
 - useRef Hook
+- Authentication
+  - Backend - Google Firebase
+  - Firebase Setup
+  - Deplyoing App in Firebase - live URL
+  - Deployed our app to production
 
 # Features
 
