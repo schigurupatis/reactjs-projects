@@ -1,8 +1,16 @@
 import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
+import { useState } from "react";
 
 const Login = () => {
+  const [isSignInForm, setIsSignInForm] = useState(true);
+
+  const toggleSignInForm = () => {
+    //console.log("singin clicked");
+    setIsSignInForm(!isSignInForm);
+  };
+
   return (
     <div className="relative">
       <Header />
@@ -13,25 +21,34 @@ const Login = () => {
       />
       <div className="wrapper w-[1024px] mx-auto">
         <form className="bg-black opacity-90 p-12 rounded-md w-[400px] mx-auto absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          <h3 className="text-white text-4xl font-semibold mb-8">Sign In</h3>
+          <h3 className="text-white text-4xl font-semibold mb-8">
+            {isSignInForm ? "Sign In" : "Sign Up"}
+          </h3>
+          {!isSignInForm && (
+            <input
+              type="text"
+              placeholder="Full Name"
+              className="w-full bg-gray-800 text-white px-4 py-3 border border-gray-400 rounded-md mb-4"
+            />
+          )}
           <input
             type="email"
             placeholder="Email or phone number"
-            className="w-full bg-gray-700 text-white px-4 py-3 border border-gray-400 rounded-md mb-4"
+            className="w-full bg-gray-800 text-white px-4 py-3 border border-gray-400 rounded-md mb-4"
           />
           <input
             type="password"
             placeholder="Password"
-            className="w-full bg-gray-700 text-white px-4 py-3 border border-gray-400 rounded-md mb-4"
+            className="w-full bg-gray-800 text-white px-4 py-3 border border-gray-400 rounded-md mb-4"
           />
           <button className="w-full bg-red-700 text-white px-4 py-2 mt-3 rounded-md">
-            Sign In
+            {isSignInForm ? "Sign In" : "Sign Up"}
           </button>
-          <p className="text-center text-white mt-5">
-            New to Netflix{" "}
-            <a href="#" className="text-red-700 font-bold">
-              SignUp
-            </a>
+          <p className="text-center text-white mt-5" onClick={toggleSignInForm}>
+            {isSignInForm ? "New to Netflix" : "Already have Account"}&nbsp;
+            <span className="text-red-700 font-bold cursor-pointer">
+              {isSignInForm ? "SignUp" : "SignIn"}
+            </span>
             &nbsp;Now
           </p>
         </form>
