@@ -2,6 +2,8 @@
 
 # Config Tailwind CSS
 
+# Header Component Build
+
 # Features
 
 - Login/Signup
@@ -14,3 +16,6 @@
   - Movie Title & Description
   - Movies Suggestions
     - Movie Lists
+- Netflix GPT
+  - Searchbar
+  - Movie Suggestions
