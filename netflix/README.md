@@ -14,6 +14,9 @@
   - Deplyoing App in Firebase - live URL
   - Deployed our app to production
   - Create SignUp User Account in Firebase
+- Implemented Signin User API
+- Created appStore - redux
+- Created userSlice for users data managment
 
 # Features
 
