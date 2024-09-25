@@ -3,6 +3,11 @@ import Header from "./Header";
 import Footer from "./Footer";
 import { useState, useRef } from "react";
 import { checkValidData } from "../utils/validate";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../utils/firebase";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -23,18 +28,65 @@ const Login = () => {
     //console.log("form submitted");
     // console.log(email.current.value);
     // console.log(password.current.value);
-    const msg = checkValidData(
-      email.current.value,
-      password.current.value,
-      fullname.current.value
-    );
+
+    // Validation logic based on form type (Sign In or Sign Up)
+    let msg = null;
+
+    if (isSignInForm) {
+      // Validate for Sign In
+      msg = checkValidData(email.current.value, password.current.value);
+    } else {
+      // Validate for Sign Up (includes fullname)
+      msg = checkValidData(
+        email.current.value,
+        password.current.value,
+        fullname.current.value
+      );
+    }
+
     console.log(msg);
     setErrorMessage(msg);
 
-    // Sign in or Sign up
-    // if (msg === null) {
-    //   console.log("Sign In or Sign Up");
-    // }
+    // Proceed with Sign In or Sign Up if no error
+    if (msg === null) {
+      if (!isSignInForm) {
+        console.log("Signing Up...");
+        // Logic for sign up can be added here
+        createUserWithEmailAndPassword(
+          auth,
+          email.current.value,
+          password.current.value
+        )
+          .then((userCredential) => {
+            // Signed up
+            const user = userCredential.user;
+            console.log(user);
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            setErrorMessage(errorCode + "" + errorMessage);
+          });
+      } else {
+        console.log("Signing In...");
+        // Logic for sign in can be added here
+        signInWithEmailAndPassword(
+          auth,
+          email.current.value,
+          password.current.value
+        )
+          .then((userCredential) => {
+            // Signed in
+            const user = userCredential.user;
+            console.log(user);
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            setErrorMessage(errorCode + "" + errorMessage);
+          });
+      }
+    }
   };
 
   return (

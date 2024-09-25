@@ -13,6 +13,7 @@
   - Firebase Setup
   - Deplyoing App in Firebase - live URL
   - Deployed our app to production
+  - Create SignUp User Account in Firebase
 
 # Features
 
