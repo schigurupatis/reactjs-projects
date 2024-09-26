@@ -6,6 +6,7 @@ import { checkValidData } from "../utils/validate";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
@@ -62,8 +63,19 @@ const Login = () => {
           .then((userCredential) => {
             // Signed up
             const user = userCredential.user;
-            console.log(user);
-            navigate("/");
+            updateProfile(user, {
+              displayName: fullname.current.value,
+              photoURL: "https://avatars.githubusercontent.com/u/32518320?v=4",
+            })
+              .then(() => {
+                console.log(user);
+                navigate("/");
+              })
+              .catch((error) => {
+                setErrorMessage(error.message);
+              });
+            // console.log(user);
+            // navigate("/");
           })
           .catch((error) => {
             const errorCode = error.code;
@@ -102,6 +114,11 @@ const Login = () => {
         className="w-full h-[100vh] object-cover bg-cover bg-center"
       />
       <div className="wrapper w-[1024px] mx-auto">
+        {/* {updateProfile.user.displayName && (
+          <div className="flex justify-between items-center bg-green-600 text-white">
+            New User {updateProfile.user.displayName} Added Successfully.
+          </div>
+        )} */}
         <form
           onSubmit={(e) => e.preventDefault()}
           className="bg-black opacity-90 p-12 rounded-md w-[400px] mx-auto absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"

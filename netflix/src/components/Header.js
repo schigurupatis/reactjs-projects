@@ -1,25 +1,34 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { onAuthStateChanged, signOut as firebaseSignOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
 import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const user = useSelector((store) => store.user);
 
   const [isUserSignedIn, setisUserSignedIn] = useState(false);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const signOut = onAuthStateChanged(auth, (user) => {
       if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/auth.user
-        const { uid, email, displayName } = user;
-        dispatch(addUser({ uid: uid, email: email, displayName: displayName }));
-        console.log(uid, email, displayName);
+        const { uid, email, displayName, photoURL } = user;
+        //console.log("User Deails are: ", uid, email, displayName, photoURL);
+        dispatch(
+          addUser({
+            uid: uid,
+            email: email,
+            displayName: displayName,
+            photoURL: photoURL,
+          })
+        );
+        //console.log(uid, email, displayName, photoURL);
         setisUserSignedIn(true);
       } else {
         // User is signed out
@@ -30,20 +39,33 @@ const Header = () => {
     });
 
     return () => {
-      unsubscribe();
+      signOut();
     };
   }, []);
 
+  // const handleSignInSignOut = () => {
+  //   signOut(auth)
+  //     .then(() => {
+  //       navigate("/");
+  //     })
+  //     .catch((error) => {
+  //       navigate("/error");
+  //     });
+  // };
   const handleSignInSignOut = () => {
-    signOut(auth)
-      .then(() => {
-        // Sign-out successful.
-        navigate("/");
-      })
-      .catch((error) => {
-        // An error happened.
-        navigate("/error");
-      });
+    if (isUserSignedIn) {
+      firebaseSignOut(auth)
+        .then(() => {
+          // Sign-out successful
+          navigate("/");
+        })
+        .catch((error) => {
+          console.error("Sign out error:", error);
+          navigate("/error");
+        });
+    } else {
+      navigate("/login");
+    }
   };
 
   return (
@@ -57,18 +79,29 @@ const Header = () => {
           />
         </a>
         <div className="flex justify-end items-center gap-3">
-          <form>
-            <select className="bg-gray-800 text-white px-4 py-1 rounded-md cursor-pointer">
-              <option>English</option>
-              <option>Spanish</option>
-            </select>
-          </form>
+          {isUserSignedIn ? (
+            <div className="flex justify-start items-start gap-3">
+              {user?.photoURL && (
+                <img
+                  src={user.photoURL}
+                  alt="User"
+                  className="w-8 h-8 rounded-full"
+                />
+              )}
+              <span>Welcome, {user?.displayName || "User"}</span>
+            </div>
+          ) : (
+            <form>
+              <select className="bg-gray-800 text-white px-4 py-1 rounded-md cursor-pointer">
+                <option>English</option>
+                <option>Spanish</option>
+              </select>
+            </form>
+          )}
           <button
             className="bg-red-600 text-white px-4 py-1 rounded-md"
             onClick={handleSignInSignOut}
           >
-            {/* {isSignInTrue ? "Sign Up" : "Sign In"} */}
-            {/* if(user) {"Sign Out"} else {"Sign In"} */}
             {isUserSignedIn ? "Sign Out" : "Sign In"}
           </button>
         </div>
