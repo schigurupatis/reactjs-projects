@@ -11,6 +11,9 @@ const Header = () => {
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
 
+  // const [isUserSignedIn, setisUserSignedIn] = useState(false);
+  // If the user exists in Redux store, they are signed in.
+  //const isUserSignedIn = !!user?.email && !isSignUp;
   const [isUserSignedIn, setisUserSignedIn] = useState(false);
 
   useEffect(() => {
@@ -29,29 +32,20 @@ const Header = () => {
           })
         );
         //console.log(uid, email, displayName, photoURL);
-        setisUserSignedIn(true);
+        //  setisUserSignedIn(true);
       } else {
         // User is signed out
         // ...
         dispatch(removeUser());
-        setisUserSignedIn(false);
+        //setisUserSignedIn(false);
       }
     });
 
     return () => {
       signOut();
     };
-  }, []);
+  }, [dispatch]);
 
-  // const handleSignInSignOut = () => {
-  //   signOut(auth)
-  //     .then(() => {
-  //       navigate("/");
-  //     })
-  //     .catch((error) => {
-  //       navigate("/error");
-  //     });
-  // };
   const handleSignInSignOut = () => {
     if (isUserSignedIn) {
       firebaseSignOut(auth)
@@ -64,7 +58,7 @@ const Header = () => {
           navigate("/error");
         });
     } else {
-      navigate("/login");
+      navigate("/");
     }
   };
 
