@@ -7,7 +7,7 @@ const Browse = () => {
     <>
       <div className="relative">
         <Header />
-        <div className="container w-[1024px] mx-auto py-5">
+        <div className="container w-[1024px] mx-auto py-5 pt-24">
           <h1>Browse</h1>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima
