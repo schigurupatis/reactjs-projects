@@ -1,6 +1,6 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import { onAuthStateChanged, signOut as firebaseSignOut } from "firebase/auth";
+import { useEffect } from "react";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
@@ -11,18 +11,12 @@ const Header = () => {
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
 
-  // const [isUserSignedIn, setisUserSignedIn] = useState(false);
-  // If the user exists in Redux store, they are signed in.
-  //const isUserSignedIn = !!user?.email && !isSignUp;
-  const [isUserSignedIn, setisUserSignedIn] = useState(false);
-
   useEffect(() => {
-    const signOut = onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(auth, (user) => {
       if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/auth.user
         const { uid, email, displayName, photoURL } = user;
-        //console.log("User Deails are: ", uid, email, displayName, photoURL);
         dispatch(
           addUser({
             uid: uid,
@@ -31,35 +25,26 @@ const Header = () => {
             photoURL: photoURL,
           })
         );
-        //console.log(uid, email, displayName, photoURL);
-        //  setisUserSignedIn(true);
+        console.log(uid, email, displayName);
+        navigate("/browse");
       } else {
         // User is signed out
         // ...
         dispatch(removeUser());
-        //setisUserSignedIn(false);
+        navigate("/");
       }
     });
-
-    return () => {
-      signOut();
-    };
-  }, [dispatch]);
+  }, []);
 
   const handleSignInSignOut = () => {
-    if (isUserSignedIn) {
-      firebaseSignOut(auth)
-        .then(() => {
-          // Sign-out successful
-          navigate("/");
-        })
-        .catch((error) => {
-          console.error("Sign out error:", error);
-          navigate("/error");
-        });
-    } else {
-      navigate("/");
-    }
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+      })
+      .catch((error) => {
+        // An error happened.
+        navigate("/error");
+      });
   };
 
   return (
@@ -73,7 +58,7 @@ const Header = () => {
           />
         </a>
         <div className="flex justify-end items-center gap-3">
-          {isUserSignedIn ? (
+          {user?.email ? (
             <div className="flex justify-start items-start gap-3">
               {user?.photoURL && (
                 <img
@@ -85,18 +70,20 @@ const Header = () => {
               <span>Welcome, {user?.displayName || "User"}</span>
             </div>
           ) : (
-            <form>
-              <select className="bg-gray-800 text-white px-4 py-1 rounded-md cursor-pointer">
-                <option>English</option>
-                <option>Spanish</option>
-              </select>
-            </form>
+            <>
+              <form>
+                <select className="bg-gray-800 text-white px-4 py-1 rounded-md cursor-pointer">
+                  <option>English</option>
+                  <option>Spanish</option>
+                </select>
+              </form>
+            </>
           )}
           <button
             className="bg-red-600 text-white px-4 py-1 rounded-md"
             onClick={handleSignInSignOut}
           >
-            {isUserSignedIn ? "Sign Out" : "Sign In"}
+            {user?.email ? "Sign Out" : "Sign In"}
           </button>
         </div>
       </div>
