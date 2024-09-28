@@ -8,6 +8,7 @@ import Aboutus from "./components/Aboutus";
 import Ministries from "./components/Ministries";
 import Branches from "./components/Branches";
 import Contactus from "./components/Contactus";
+import Dashboard from "./components/Dashboard";
 import Error from "./components/Error";
 import { Provider } from "react-redux";
 import store from "./utils/store";
@@ -49,6 +50,10 @@ function App() {
         {
           path: "/contactus",
           element: <Contactus />,
+        },
+        {
+          path: "/dashboard",
+          element: <Dashboard />,
         },
         {
           path: "/*",
