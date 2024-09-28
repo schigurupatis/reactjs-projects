@@ -1,8 +1,15 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const navigate = useNavigate();
+  const [isRegistered, setIsRegistered] = useState(false);
+  const [fadeOut, setFadeOut] = useState(false); // New state for fade out
+
+  //Setup Yup
   const registerSchema = Yup.object().shape({
     fullname: Yup.string()
       .required("Full Name is required")
@@ -33,8 +40,24 @@ const Register = () => {
       password: "",
     },
     validationSchema: registerSchema,
-    onSubmit: (values) => {
+    onSubmit: (values, { resetForm }) => {
       console.log("Form Data", values);
+      // Simulate successful registration
+      setIsRegistered(true);
+
+      // Optionally reset the form after submission
+      resetForm();
+
+      // Remove success message after 3 seconds
+      setTimeout(() => {
+        setFadeOut(true); // Set fade out state
+        setTimeout(() => {
+          setIsRegistered(false); // Hide message after fade out
+          setFadeOut(false); // Reset fade out state
+          // Navigate to the login page
+          navigate("/login");
+        }, 300); // Duration of fade out transition
+      }, 3000);
     },
   });
 
@@ -114,10 +137,22 @@ const Register = () => {
           </div>
           <button
             type="submit"
-            className="bg-violet-800 text-white px-5 py-2 rounded-md w-full my-5"
+            className="bg-violet-800 text-white px-5 py-2 rounded-md w-full my-5 focus:border-none focus:outline-none"
           >
             SingUp
           </button>
+          {isRegistered &&
+            !fadeOut && ( // Show only if not fading out
+              <div
+                className={`bg-green-600 text-white px-5 py-3 text-center transition-transform transform ${
+                  fadeOut
+                    ? "translate-y-20 opacity-0"
+                    : "translate-y-0 opacity-100"
+                }`}
+              >
+                Registered Successfully... Now you can Login
+              </div>
+            )}
         </form>
       </div>
     </>

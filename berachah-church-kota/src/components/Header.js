@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -6,43 +7,45 @@ const Header = () => {
       <header className="bg-violet-800 text-white p-4">
         <div className="flex justify-between items-center w-[1024px] mx-auto">
           <div>
-            <h1 className="logo">Berachah Church</h1>
+            <h1 className="logo">
+              <Link to="/">Berachah Church</Link>
+            </h1>
           </div>
           <nav className="flex justify-between items-center gap-10">
             <ul className="flex flex-start items-center gap-8">
               <li>
-                <a href="#">Home</a>
+                <Link to="/">Home</Link>
               </li>
               <li>
-                <a href="#">Aboutus</a>
+                <Link to="/aboutus">Aboutus</Link>
               </li>
               <li>
-                <a href="#">Ministries</a>
+                <Link to="/ministries">Ministries</Link>
               </li>
               <li>
-                <a href="#">Branches</a>
+                <Link to="/branches">Branches</Link>
               </li>
               <li>
-                <a href="#">Contactus</a>
+                <Link to="/contactus">Contactus</Link>
               </li>
             </ul>
 
             <ul className="flex flex-start items-start gap-3">
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/login"
                   className="bg-violet-900 text-white px-5 py-2 rounded-full"
                 >
                   Login
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/register"
                   className="bg-violet-900 text-white px-5 py-2 rounded-full"
                 >
                   Register
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>
