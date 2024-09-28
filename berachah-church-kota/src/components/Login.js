@@ -1,6 +1,25 @@
 import React from "react";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 const Login = () => {
+  const loginSchema = Yup.object().shape({
+    phoneorEmail: Yup.string()
+      .required("Phone / Email is required")
+      .test(
+        "phone-or-email",
+        "Phone / Email must be a valid email or phone number",
+        function (value) {
+          const phoneRegex = /^[6-9]\d{9}$/;
+          const emailRegex = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/;
+          return phoneRegex.test(value) || emailRegex.test(value);
+        }
+      ),
+    password: Yup.string()
+      .required("Password is required")
+      .min(6, "Password atleast 6 characters")
+      .max(50, "Password Too Long"),
+  });
   return (
     <>
       <div className="w-[1024px] mx-auto py-10">

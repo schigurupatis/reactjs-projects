@@ -3,11 +3,14 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setUser } from "../utils/userSlice";
 
 const Register = () => {
   const navigate = useNavigate();
   const [isRegistered, setIsRegistered] = useState(false);
   const [fadeOut, setFadeOut] = useState(false); // New state for fade out
+  const dispatch = useDispatch();
 
   //Setup Yup
   const registerSchema = Yup.object().shape({
@@ -44,6 +47,9 @@ const Register = () => {
       console.log("Form Data", values);
       // Simulate successful registration
       setIsRegistered(true);
+
+      // Dispatch user data to Redux store
+      dispatch(setUser(values));
 
       // Optionally reset the form after submission
       resetForm();

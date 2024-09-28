@@ -9,6 +9,8 @@ import Ministries from "./components/Ministries";
 import Branches from "./components/Branches";
 import Contactus from "./components/Contactus";
 import Error from "./components/Error";
+import { Provider } from "react-redux";
+import store from "./utils/store";
 
 function App() {
   const appRouter = createBrowserRouter([
@@ -58,7 +60,9 @@ function App() {
 
   return (
     <>
-      <RouterProvider router={appRouter}></RouterProvider>
+      <Provider store={store}>
+        <RouterProvider router={appRouter}></RouterProvider>
+      </Provider>
     </>
   );
 }

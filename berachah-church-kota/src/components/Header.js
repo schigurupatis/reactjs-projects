@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+  const user = useSelector((state) => state.user);
+  console.log("User Data from Store is: ", user);
+
   return (
     <>
       <header className="bg-violet-800 text-white p-4">
