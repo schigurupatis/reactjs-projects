@@ -1,27 +1,26 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <>
-      <header className="bg-violet-800 text-white p-3">
+      <header className="bg-violet-800 text-white p-4">
         <div className="flex justify-between items-center w-[1024px] mx-auto">
           <div>
             <h1 className="logo">Berachah Church</h1>
           </div>
           <nav className="flex justify-between items-center gap-10">
-            <ul className="flex flex-start items-center gap-4">
+            <ul className="flex flex-start items-center gap-8">
               <li>
                 <a href="#">Home</a>
               </li>
               <li>
-                <a href="#">About</a>
+                <a href="#">Aboutus</a>
               </li>
               <li>
-                <a href="#">Worships</a>
+                <a href="#">Ministries</a>
               </li>
               <li>
-                <a href="#">Events</a>
+                <a href="#">Branches</a>
               </li>
               <li>
                 <a href="#">Contactus</a>
@@ -30,10 +29,20 @@ const Header = () => {
 
             <ul className="flex flex-start items-start gap-3">
               <li>
-                <a href="#">Login</a>
+                <a
+                  href="#"
+                  className="bg-violet-900 text-white px-5 py-2 rounded-full"
+                >
+                  Login
+                </a>
               </li>
               <li>
-                <a href="#">Register</a>
+                <a
+                  href="#"
+                  className="bg-violet-900 text-white px-5 py-2 rounded-full"
+                >
+                  Register
+                </a>
               </li>
             </ul>
           </nav>
