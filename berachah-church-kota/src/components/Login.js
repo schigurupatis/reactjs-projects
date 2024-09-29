@@ -2,15 +2,21 @@ import React from "react";
 import { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 // import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 const Login = () => {
   const navigate = useNavigate();
   //const dispatch = useDispatch();
   const [isLoginSuccess, setIsLoginSuccess] = useState(false);
   const [fadeOut, setFadeOut] = useState(false); // New state for fade out
+  const [error, setError] = useState("");
 
+  //Accessing the user data from Redux store
+  const registeredUser = useSelector((state) => state.user.user);
+
+  //Setup Yup for form validation
   const loginSchema = Yup.object().shape({
     phoneorEmail: Yup.string()
       .required("Phone / Email is required")
@@ -36,24 +42,22 @@ const Login = () => {
       password: "",
     },
     validationSchema: loginSchema,
-    onSubmit: (values, { resetForm }) => {
-      console.log("Form Data", values);
-      // Simulate successful registration
-      setIsLoginSuccess(true);
-
-      // Dispatch user data to Redux store
-      //dispatch(setUser(values));
-
-      // Remove success message after 3 seconds
-      setTimeout(() => {
-        setFadeOut(true); // Set fade out state
+    onSubmit: (values) => {
+      // Check if the entered data matches the registered user
+      if (
+        registeredUser &&
+        registeredUser.phoneorEmail === values.phoneorEmail &&
+        registeredUser.password === values.password
+      ) {
+        // Login success, navigate to dashboard
+        setIsLoginSuccess(true);
         setTimeout(() => {
-          setIsLoginSuccess(false); // Hide message after fade out
-          setFadeOut(false); // Reset fade out state
-          // Navigate to the login page
           navigate("/dashboard");
-        }, 300); // Duration of fade out transition
-      }, 3000);
+        }, 3000);
+      } else {
+        // Show error if the credentials don't match
+        setError("Invalid login credentials or user not registered.");
+      }
     },
   });
 
@@ -75,8 +79,10 @@ const Login = () => {
                 id="phoneorEmail"
                 name="phoneorEmail"
                 autoComplete="phoneorEmail"
-                required
                 className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-violet-500 focus:border-violet-500 sm:text-sm"
+                value={formik.values.phoneorEmail}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
               />
             </div>
             {formik.touched.phoneorEmail && formik.errors.phoneorEmail ? (
@@ -96,8 +102,10 @@ const Login = () => {
                 id="password"
                 name="password"
                 autoComplete="password"
-                required
                 className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-violet-500 focus:border-violet-500 sm:text-sm"
+                value={formik.values.password}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
               />
             </div>
             {formik.touched.password && formik.errors.password ? (
@@ -110,6 +118,13 @@ const Login = () => {
           >
             SingIn
           </button>
+          <p className="text-center text-violet-900 font-bold my-5">
+            Dont have Account?
+            <Link to="/register" className="text-red-600">
+              Register
+            </Link>
+            Now
+          </p>
           {isLoginSuccess &&
             !fadeOut && ( // Show only if not fading out
               <div
@@ -122,6 +137,11 @@ const Login = () => {
                 Login Successfull... Redirecting to Dashboard
               </div>
             )}
+          {error && (
+            <div className="bg-red-600 text-white px-5 py-3 text-center">
+              {error}
+            </div>
+          )}
         </form>
       </div>
     </>

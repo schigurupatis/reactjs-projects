@@ -2,7 +2,7 @@ import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setUser } from "../utils/userSlice";
 
@@ -147,6 +147,13 @@ const Register = () => {
           >
             SingUp
           </button>
+          <p className="text-center text-violet-900 font-bold my-5">
+            Already have Account?{" "}
+            <Link to="/login" className="text-red-600">
+              Login
+            </Link>{" "}
+            Now
+          </p>
           {isRegistered &&
             !fadeOut && ( // Show only if not fading out
               <div
