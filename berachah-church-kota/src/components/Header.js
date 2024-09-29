@@ -1,10 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../utils/userSlice";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
-  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const user = useSelector((state) => state.user.user);
   console.log("User Data from Store is: ", user);
+
+  // Logout handler
+  const handleLogout = () => {
+    dispatch(logout()); // Clear user data in Redux store
+    navigate("/home"); // Redirect to login page
+  };
 
   return (
     <>
@@ -35,22 +45,35 @@ const Header = () => {
             </ul>
 
             <ul className="flex flex-start items-start gap-3">
-              <li>
-                <Link
-                  to="/login"
-                  className="bg-violet-900 text-white px-5 py-2 rounded-full"
-                >
-                  Login
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/register"
-                  className="bg-violet-900 text-white px-5 py-2 rounded-full"
-                >
-                  Register
-                </Link>
-              </li>
+              {user ? (
+                <li>
+                  <button
+                    onClick={handleLogout}
+                    className="bg-red-600 text-white px-5 py-2 rounded-full"
+                  >
+                    Logout
+                  </button>
+                </li>
+              ) : (
+                <>
+                  <li>
+                    <Link
+                      to="/login"
+                      className="bg-violet-900 text-white px-5 py-2 rounded-full"
+                    >
+                      Login
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/register"
+                      className="bg-violet-900 text-white px-5 py-2 rounded-full"
+                    >
+                      Register
+                    </Link>
+                  </li>
+                </>
+              )}
             </ul>
           </nav>
         </div>
