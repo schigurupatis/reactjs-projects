@@ -12,11 +12,12 @@ import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { USER_AVATAR } from "../utils/constants";
+import { LOGIN_BG } from "../utils/constants";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
-  const [isSignUp, setIsSignUp] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -69,7 +70,7 @@ const Login = () => {
             const user = userCredential.user;
             updateProfile(user, {
               displayName: fullname.current.value,
-              photoURL: "https://avatars.githubusercontent.com/u/32518320?v=4",
+              photoURL: USER_AVATAR,
             })
               .then(() => {
                 const { uid, email, displayName, photoURL } = auth.currentUser;
@@ -81,7 +82,6 @@ const Login = () => {
                     photoURL: photoURL,
                   })
                 );
-                setIsSignUp(true); // Not sign-up, it's a login
                 console.log(user);
                 navigate("/");
               })
@@ -107,7 +107,6 @@ const Login = () => {
           .then((userCredential) => {
             // Signed in
             const user = userCredential.user;
-            setIsSignUp(false); // Not sign-up, it's a login
             const { uid, email, displayName, photoURL } = auth.currentUser;
             dispatch(
               addUser({
@@ -133,7 +132,7 @@ const Login = () => {
     <div className="relative">
       <Header />
       <img
-        src="https://assets.nflxext.com/ffe/siteui/vlv3/47c2bc92-5a2a-4f33-8f91-4314e9e62ef1/web/IN-en-20240916-TRIFECTA-perspective_72df5d07-cf3f-4530-9afd-8f1d92d7f1a8_small.jpg"
+        src={LOGIN_BG}
         alt="headerbg"
         className="w-full h-[100vh] object-cover bg-cover bg-center"
       />

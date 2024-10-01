@@ -4,7 +4,8 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { logo } from "../utils/constants";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ const Header = () => {
   const user = useSelector((store) => store.user);
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/auth.user
@@ -31,15 +32,20 @@ const Header = () => {
         // User is signed out
         // ...
         dispatch(removeUser());
-        navigate("/");
+        //navigate("/");
       }
     });
+    // Cleanup subscription on unmount
+    return unsubscribe();
   }, []);
 
   const handleSignInSignOut = () => {
+    //console.log(user.email.current.value);
     signOut(auth)
       .then(() => {
         // Sign-out successful.
+        dispatch(removeUser());
+        navigate("/");
       })
       .catch((error) => {
         // An error happened.
@@ -50,13 +56,9 @@ const Header = () => {
   return (
     <header className="absolute w-full bg-gradient-to-b from-black h-[120px]">
       <div className="container w-[1024px] mx-auto h-24 flex justify-between items-center">
-        <a href="#">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
-            alt="Netflix"
-            className="w-36 h-10 object-contain"
-          />
-        </a>
+        <Link to="/">
+          <img src={logo} alt="Netflix" className="w-36 h-10 object-contain" />
+        </Link>
         <div className="flex justify-end items-center gap-3">
           {user?.email ? (
             <div className="flex justify-start items-start gap-3">

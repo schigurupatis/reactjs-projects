@@ -17,6 +17,9 @@
 - Implemented Signin User API
 - Created appStore - redux
 - Created userSlice for users data managment
+- Bugfix: signup user displayname and profile picture update
+- Bugfix: if the user not loggedin redirect to "/browse" page to "Login" page and viceversa
+- Unsubscribe to the onAuthStateChange callback
 
 # Features
 
