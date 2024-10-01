@@ -20,6 +20,8 @@
 - Bugfix: signup user displayname and profile picture update
 - Bugfix: if the user not loggedin redirect to "/browse" page to "Login" page and viceversa
 - Unsubscribe to the onAuthStateChange callback
+- Register TMDB API & Create an app and got access token
+- Get data from TMDB "Now Playing" movies List API
 
 # Features
 
