@@ -5,6 +5,8 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setUser } from "../utils/userSlice";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../utils/firebase";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -47,6 +49,18 @@ const Register = () => {
       console.log("Form Data", values);
       // Simulate successful registration
       setIsRegistered(true);
+
+      // createUserWithEmailAndPassword(auth, phoneorEmail, password)
+      //   .then((userCredential) => {
+      //     // Signed up
+      //     const user = userCredential.user;
+      //     // ...
+      //   })
+      //   .catch((error) => {
+      //     const errorCode = error.code;
+      //     const errorMessage = error.message;
+      //     // ..
+      //   });
 
       // Dispatch user data to Redux store
       dispatch(setUser(values));

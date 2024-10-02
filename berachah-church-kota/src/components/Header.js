@@ -8,7 +8,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state) => state.user.user);
-  console.log("User Data from Store is: ", user);
+  console.log("User Data from Store from Header is: ", user);
 
   // Logout handler
   const handleLogout = () => {
@@ -22,7 +22,7 @@ const Header = () => {
         <div className="flex justify-between items-center w-[1024px] mx-auto">
           <div>
             <h1 className="logo">
-              <Link to="/">Berachah Church</Link>
+              <Link to="/">Berachah House of Worship - Kota</Link>
             </h1>
           </div>
           <nav className="flex justify-between items-center gap-10">
