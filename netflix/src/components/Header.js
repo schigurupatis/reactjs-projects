@@ -13,7 +13,7 @@ const Header = () => {
   const user = useSelector((store) => store.user);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(auth, (user) => {
       if (user) {
         // User is signed in
         const { uid, email, displayName, photoURL } = user;
@@ -33,7 +33,7 @@ const Header = () => {
       }
     });
     // Cleanup subscription on unmount
-    return unsubscribe();
+    //return unsubscribe();
   }, []);
 
   const handleSignInSignOut = () => {
@@ -41,8 +41,8 @@ const Header = () => {
     signOut(auth)
       .then(() => {
         // Sign-out successful.
-        dispatch(removeUser());
-        navigate("/");
+        // dispatch(removeUser());
+        // navigate("/");
       })
       .catch((error) => {
         // An error happened.

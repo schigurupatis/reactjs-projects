@@ -9,7 +9,6 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { USER_AVATAR } from "../utils/constants";
@@ -18,7 +17,6 @@ import { LOGIN_BG } from "../utils/constants";
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const email = useRef(null);
@@ -82,7 +80,7 @@ const Login = () => {
                   })
                 );
                 console.log(user);
-                navigate("/");
+                //navigate("/");
               })
               .catch((error) => {
                 setErrorMessage(error.message);
@@ -116,7 +114,7 @@ const Login = () => {
               })
             );
             console.log(user);
-            navigate("/browse");
+            //navigate("/browse");
           })
           .catch((error) => {
             const errorCode = error.code;
