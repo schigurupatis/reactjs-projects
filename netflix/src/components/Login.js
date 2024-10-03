@@ -43,6 +43,8 @@ const Login = () => {
     if (isSignInForm) {
       // Validate for Sign In
       msg = checkValidData(email.current.value, password.current.value);
+      console.log(msg);
+      setErrorMessage(msg);
     } else {
       // Validate for Sign Up (includes fullname)
       msg = checkValidData(
@@ -51,9 +53,6 @@ const Login = () => {
         fullname.current.value
       );
     }
-
-    console.log(msg);
-    setErrorMessage(msg);
 
     // Proceed with Sign In or Sign Up if no error
     if (msg === null) {
