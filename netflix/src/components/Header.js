@@ -13,10 +13,11 @@ const Header = () => {
   const user = useSelector((store) => store.user);
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         // User is signed in
         const { uid, email, displayName, photoURL } = user;
+        console.log(photoURL);
         dispatch(
           addUser({
             uid: uid,
@@ -33,7 +34,7 @@ const Header = () => {
       }
     });
     // Cleanup subscription on unmount
-    //return unsubscribe();
+    return () => unsubscribe();
   }, []);
 
   const handleSignInSignOut = () => {
@@ -59,14 +60,12 @@ const Header = () => {
         <div className="flex justify-end items-center gap-3">
           {user?.email ? (
             <div className="flex justify-start items-start gap-3">
-              {user?.photoURL && (
-                <img
-                  src={user.photoURL}
-                  alt="User"
-                  className="w-8 h-8 rounded-full"
-                />
-              )}
-              <span>Welcome, {user?.displayName || "User"}</span>
+              <img
+                src={user?.photoURL}
+                alt="User"
+                className="w-8 h-8 rounded-full"
+              />
+              <span>Welcome, {user?.displayName}</span>
             </div>
           ) : (
             <>
