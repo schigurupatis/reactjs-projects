@@ -1,14 +1,34 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../utils/userSlice";
 import { useNavigate } from "react-router-dom";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../utils/firebase";
 
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state) => state.user.user);
-  console.log("User Data from Store from Header is: ", user);
+  console.log("Created User Data from Store from Header is: ", user);
+
+  // useEffect(() => {
+  //   if (user) {
+  //     createUserWithEmailAndPassword(auth, user.phoneorEmail, user.password)
+  //       .then((userCredential) => {
+  //         // Signed up
+  //         const user = userCredential.user;
+  //         // ...
+  //         console.log(user);
+  //       })
+  //       .catch((error) => {
+  //         const errorCode = error.code;
+  //         const errorMessage = error.message;
+  //         // ..
+  //         console.log(errorCode + " - " + errorMessage);
+  //       });
+  //   }
+  // }, [user]);
 
   // Logout handler
   const handleLogout = () => {

@@ -119,11 +119,11 @@ const Login = () => {
             SingIn
           </button>
           <p className="text-center text-violet-900 font-bold my-5">
-            Dont have Account?
+            Dont have Account?&nbsp;
             <Link to="/register" className="text-red-600">
               Register
             </Link>
-            Now
+            &nbsp;Now
           </p>
           {isLoginSuccess &&
             !fadeOut && ( // Show only if not fading out

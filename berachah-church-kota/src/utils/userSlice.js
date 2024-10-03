@@ -4,17 +4,6 @@ const initialState = {
   user: null, // No user by default
 };
 
-// const userSlice = createSlice({
-//   name: "user",
-//   initialState: {
-//     user: null,
-//   },
-//   reducers: {
-//     setUser: (state, action) => {
-//       state.user = action.payload;
-//     },
-//   },
-// });
 const userSlice = createSlice({
   name: "user",
   initialState,
