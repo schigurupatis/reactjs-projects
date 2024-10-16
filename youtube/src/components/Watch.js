@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Link } from "react";
 import { useDispatch } from "react-redux";
 import { setMenuClose } from "../utils/appSlice";
 import { useSearchParams } from "react-router-dom";
 import { YOUTUBE_API_KEY } from "../utils/constants";
+import { YOUTUBE_VIDEOS_API } from "../utils/constants";
 import CommentsContainer from "./CommentsContainer";
 
 const Watch = () => {
@@ -26,7 +27,7 @@ const Watch = () => {
       `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoID}&key=${YOUTUBE_API_KEY}`
     );
     const json = await data.json();
-    console.log("Specific Video: ", json.items[0].snippet);
+    //console.log("Specific Video: ", json.items[0].snippet);
     setSpecificVideo(json.items[0]);
   };
 
@@ -53,7 +54,7 @@ const Watch = () => {
       `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${channelId}&key=${YOUTUBE_API_KEY}`
     );
     const json = await data.json();
-    console.log("Specific Channel: ", json.items[0]);
+    //console.log("Specific Channel: ", json.items[0]);
     setSpecificChannel(json.items[0]);
   };
 
@@ -124,7 +125,11 @@ const Watch = () => {
         </div>
       </div>
       <div className="w-4/12">
-        <h6>Sidebar</h6>
+        <div className="flex justify-start items-top flex-wrap gap-3 w-full">
+          {/* {videos.map((video) => (
+            <SuggestionVideo key={video.id} info={video} />
+          ))} */}
+        </div>
       </div>
     </>
   );

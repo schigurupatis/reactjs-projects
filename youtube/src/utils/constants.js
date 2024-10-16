@@ -6,7 +6,8 @@ export const favicon =
 export const thumbnail =
   "https://i.ytimg.com/vi/3HkSttt1iJg/hq720.jpg?sqp=-oaymwEpCNAFEJQDSFryq4qpAxsIARUAAIhCGAHYAQHiAQwIGBACGAYgATgBQAE=&rs=AOn4CLAWPAZI2U4-k1FwZItOfuW-Fs2hvA";
 
-export const YOUTUBE_API_KEY = "AIzaSyDkOf71_QqCAbh3EBG5_UP_38xUP8_aUg8";
+// export const YOUTUBE_API_KEY = "AIzaSyDkOf71_QqCAbh3EBG5_UP_38xUP8_aUg8";
+export const YOUTUBE_API_KEY = "AIzaSyD4fk0_AeC8DSGQG8cO5v3qVqVFwmX97rs";
 
 export const YOUTUBE_VIDEOS_API =
   "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=IN&key=" +
