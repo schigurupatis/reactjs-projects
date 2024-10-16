@@ -31,7 +31,9 @@ const Browse = () => {
 
         <VideoContainer />
         <MainContainer />
-        {nowPlayingMovies && movie.title}
+        {/* {nowPlayingMovies && movie.title} */}
+        {/* {movie.title} */}
+        {nowPlayingMovies.map((movie) => movie.title)}
         <Footer />
       </div>
     </>
