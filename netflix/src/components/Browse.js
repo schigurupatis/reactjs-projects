@@ -33,7 +33,6 @@ const Browse = () => {
         <MainContainer />
         {/* {nowPlayingMovies && movie.title} */}
         {/* {movie.title} */}
-        {nowPlayingMovies.map((movie) => movie.title)}
         <Footer />
       </div>
     </>
