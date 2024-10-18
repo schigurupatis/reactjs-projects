@@ -16,7 +16,7 @@ import { YOUTUBE_SEARCH_API } from "../utils/constants";
 import { cacheResults } from "../utils/searchSlice";
 
 const Header = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleToggle = () => {
@@ -31,6 +31,7 @@ const Header = () => {
   //console.log(selectedSearchSuggestion);
 
   const searchCache = useSelector((store) => store.search);
+  const dispatch = useDispatch()
 
   useEffect(() => {
     //console.log("searchquery is", searchquery);
@@ -72,6 +73,7 @@ const Header = () => {
     const formattedQuery = suggestion.split(" ").join("+");
     navigate(`/results?search_query=${formattedQuery}`);
   };
+  
 
   return (
     <header className="shadow-md px-7 py-2">
