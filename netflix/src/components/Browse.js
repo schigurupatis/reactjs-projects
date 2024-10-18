@@ -7,10 +7,9 @@ import MainContainer from "./MainContainer";
 import { useSelector } from "react-redux";
 
 const Browse = () => {
-  const nowPlayingMovies = useSelector(
-    (store) => store.movies.nowPlayingMovies
-  );
-  const movie = nowPlayingMovies[0];
+  // const nowPlayingMovies = useSelector(store => store.movies.nowPlayingMovies);
+  // if(nowPlayingMovies === null) return;
+  // const movie = nowPlayingMovies[0];
 
   useNowPlayingMovies();
 
